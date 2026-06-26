@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lantern & Co. — Websites and social growth for local businesses</title>
+<meta name="description" content="Lantern & Co. builds websites and manages social media for local businesses. Three developers, real results.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,400..600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- Fixed mesh-gradient + dot-grid backdrop, visible through glass panels site-wide -->
+<div class="site-mesh">
+  <div class="mesh-blob mesh-1"></div>
+  <div class="mesh-blob mesh-2"></div>
+  <div class="mesh-blob mesh-3"></div>
+  <div class="mesh-blob mesh-4"></div>
+  <div class="dot-grid"></div>
+</div>
+
+<!-- Grain / noise overlay for texture -->
+<div class="grain"></div>
+
+<!-- ============ NAV ============ -->
+<header class="nav-wrap">
+  <nav class="nav glass">
+    <a href="#top" class="nav-logo">
+      <span class="nav-logo-mark">L&amp;Co.</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#team">Team</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Get a quote</a>
+    <button class="nav-burger" id="navBurger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="top">
+  <div class="hero-bg">
+    <div class="hero-blob blob-1"></div>
+    <div class="hero-blob blob-2"></div>
+    <div class="hero-blob blob-3"></div>
+  </div>
+
+  <div class="hero-inner">
+    <p class="eyebrow hero-eyebrow"><span class="eyebrow-dot"></span>Three developers. One studio.</p>
+
+    <h1 class="hero-title">
+      <span class="line">We build the website</span>
+      <span class="line">your shop deserves<span class="hero-dot">.</span></span>
+    </h1>
+
+    <p class="hero-sub">
+      Lantern & Co. designs websites and runs social media for local businesses —
+      the cafés, clinics, studios, and shops that make a street worth walking down.
+    </p>
+
+    <div class="hero-actions">
+      <a href="#contact" class="btn btn-primary">Get a free quote</a>
+      <a href="#projects" class="btn btn-ghost">See our work</a>
+    </div>
+
+    <div class="hero-stats glass">
+      <div class="stat">
+        <span class="stat-num" data-count="14">0</span>
+        <span class="stat-label">Projects delivered</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <span class="stat-num" data-count="3">0</span>
+        <span class="stat-label">In progress now</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <span class="stat-num" data-count="3">0</span>
+        <span class="stat-label">Developers, one team</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MARQUEE STRIP ============ -->
+<div class="marquee">
+  <div class="marquee-track">
+    <span>Local-first design</span><span class="sep">/</span>
+    <span>Fast, lightweight sites</span><span class="sep">/</span>
+    <span>Social media that sounds human</span><span class="sep">/</span>
+    <span>Built by three developers</span><span class="sep">/</span>
+    <span>Local-first design</span><span class="sep">/</span>
+    <span>Fast, lightweight sites</span><span class="sep">/</span>
+    <span>Social media that sounds human</span><span class="sep">/</span>
+    <span>Built by three developers</span><span class="sep">/</span>
+  </div>
+</div>
+
+<!-- ============ SERVICES ============ -->
+<section class="section" id="services">
+  <div class="container">
+    <p class="eyebrow">What we do</p>
+    <h2 class="section-title">Everything your business needs online, <em>nothing it doesn't.</em></h2>
+
+    <div class="services-grid">
+
+      <div class="service-card glass reveal-up tilt">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M3 5.5C3 4.67 3.67 4 4.5 4h15c.83 0 1.5.67 1.5 1.5v13c0 .83-.67 1.5-1.5 1.5h-15A1.5 1.5 0 0 1 3 18.5v-13Z" stroke="currentColor" stroke-width="1.4"/><path d="M3 8.5h18" stroke="currentColor" stroke-width="1.4"/><circle cx="5.6" cy="6.2" r=".7" fill="currentColor"/><circle cx="7.6" cy="6.2" r=".7" fill="currentColor"/></svg>
+        </div>
+        <h3>Website design & build</h3>
+        <p>Custom-built sites — not templates with your logo slapped on. Fast, clean, and built to convert visitors into customers.</p>
+        <ul class="service-list">
+          <li>Responsive, mobile-first builds</li>
+          <li>Booking / contact integrations</li>
+          <li>Light e-commerce setups</li>
+        </ul>
+      </div>
+
+      <div class="service-card glass reveal-up tilt">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><circle cx="12" cy="12" r="3.2" stroke="currentColor" stroke-width="1.4"/></svg>
+        </div>
+        <h3>Maintenance & support</h3>
+        <p>Sites stay fast, secure, and current. We handle the updates, backups, and small fixes so you don't have to think about it.</p>
+        <ul class="service-list">
+          <li>Monthly health checks</li>
+          <li>Content & copy updates</li>
+          <li>Priority bug fixes</li>
+        </ul>
+      </div>
+
+      <div class="service-card glass reveal-up tilt">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M7 17v-5M12 17V8M17 17v-9" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><rect x="3" y="3" width="18" height="18" rx="3" stroke="currentColor" stroke-width="1.4"/></svg>
+        </div>
+        <h3>Social media management</h3>
+        <p>Posts, captions, and a content calendar that actually sounds like your business — not a marketing template.</p>
+        <ul class="service-list">
+          <li>Content calendars</li>
+          <li>Reels / post design</li>
+          <li>Basic ad campaign setup</li>
+        </ul>
+      </div>
+
+      <div class="service-card glass reveal-up tilt">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M11 19a8 8 0 1 0 0-16 8 8 0 0 0 0 16Z" stroke="currentColor" stroke-width="1.4"/><path d="M21 21l-3.5-3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Local SEO & visibility</h3>
+        <p>Show up when nearby customers search. We tune your site and listings so local search works for you, not against you.</p>
+        <ul class="service-list">
+          <li>Google Business optimization</li>
+          <li>On-page SEO setup</li>
+          <li>Local keyword targeting</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRICING ============ -->
+<section class="section section-alt" id="pricing">
+  <div class="container">
+    <p class="eyebrow">Plans</p>
+    <h2 class="section-title">Pricing that scales <em>with your business,</em> not against it.</h2>
+    <p class="section-sub">Pick a plan to start, or tell us what you actually need — we'll quote it straight.</p>
+
+    <div class="pricing-grid">
+
+      <div class="price-card glass reveal-up">
+        <h3 class="price-name">Starter</h3>
+        <p class="price-desc">For businesses that just need a clean, credible site.</p>
+        <div class="price-amount"><span class="curr">₹</span>14,999<span class="price-period">one-time</span></div>
+        <ul class="price-features">
+          <li>Up to 5 pages</li>
+          <li>Mobile-responsive design</li>
+          <li>Contact form integration</li>
+          <li>1 round of revisions</li>
+          <li>Basic on-page SEO</li>
+        </ul>
+        <a href="#contact" class="btn btn-outline">Start here</a>
+      </div>
+
+      <div class="price-card glass price-featured reveal-up">
+        <span class="price-tag">Most popular</span>
+        <h3 class="price-name">Growth</h3>
+        <p class="price-desc">For businesses ready to build a real online presence.</p>
+        <div class="price-amount"><span class="curr">₹</span>29,999<span class="price-period">+ ₹4,999/mo</span></div>
+        <ul class="price-features">
+          <li>Everything in Starter</li>
+          <li>Up to 10 pages</li>
+          <li>Monthly social media posting (8 posts)</li>
+          <li>Content calendar</li>
+          <li>2 rounds of revisions</li>
+        </ul>
+        <a href="#contact" class="btn btn-primary">Start here</a>
+      </div>
+
+      <div class="price-card glass reveal-up">
+        <h3 class="price-name">Pro</h3>
+        <p class="price-desc">For businesses that want it fully handled.</p>
+        <div class="price-amount"><span class="curr">₹</span>49,999<span class="price-period">+ ₹8,999/mo</span></div>
+        <ul class="price-features">
+          <li>Everything in Growth</li>
+          <li>Unlimited pages</li>
+          <li>Daily social posting & engagement</li>
+          <li>Monthly maintenance & reporting</li>
+          <li>Priority support</li>
+        </ul>
+        <a href="#contact" class="btn btn-outline">Start here</a>
+      </div>
+
+      <div class="price-card glass price-custom reveal-up">
+        <h3 class="price-name">Custom</h3>
+        <p class="price-desc">Multi-location, e-commerce, or something else entirely — let's talk it through.</p>
+        <div class="price-amount price-amount-custom">Let's talk</div>
+        <ul class="price-features">
+          <li>Tailored scope & timeline</li>
+          <li>Flexible monthly or project pricing</li>
+          <li>Built around your actual goals</li>
+        </ul>
+        <a href="#contact" class="btn btn-outline">Get a custom quote</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ TEAM ============ -->
+<section class="section" id="team">
+  <div class="container">
+    <p class="eyebrow">Who's building it</p>
+    <h2 class="section-title">Three developers. <em>No middlemen.</em></h2>
+    <p class="section-sub">You talk directly to the people writing your code — every time.</p>
+
+    <div class="team-grid">
+
+      <div class="team-card glass reveal-up tilt">
+        <div class="team-avatar">AR</div>
+        <h3>[Name 1]</h3>
+        <p class="team-role">Frontend Developer</p>
+        <p class="team-bio">Builds the interfaces customers actually click through — focused on speed, clarity, and detail.</p>
+        <div class="team-links">
+          <a href="#" class="team-link">Portfolio</a>
+          <a href="#" class="team-link">GitHub</a>
+          <a href="#" class="team-link">LinkedIn</a>
+        </div>
+      </div>
+
+      <div class="team-card glass reveal-up tilt">
+        <div class="team-avatar">KS</div>
+        <h3>[Name 2]</h3>
+        <p class="team-role">Backend Developer</p>
+        <p class="team-bio">Handles the systems underneath — databases, integrations, and the stuff that has to just work.</p>
+        <div class="team-links">
+          <a href="#" class="team-link">Portfolio</a>
+          <a href="#" class="team-link">GitHub</a>
+          <a href="#" class="team-link">LinkedIn</a>
+        </div>
+      </div>
+
+      <div class="team-card glass reveal-up tilt">
+        <div class="team-avatar">MP</div>
+        <h3>[Name 3]</h3>
+        <p class="team-role">Design & Social Lead</p>
+        <p class="team-bio">Shapes how a business looks and sounds online, from layout to the caption under every post.</p>
+        <div class="team-links">
+          <a href="#" class="team-link">Portfolio</a>
+          <a href="#" class="team-link">GitHub</a>
+          <a href="#" class="team-link">LinkedIn</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROJECTS ============ -->
+<section class="section section-alt" id="projects">
+  <div class="container">
+    <p class="eyebrow">Our work</p>
+    <h2 class="section-title">Real businesses. <em>Real sites.</em></h2>
+
+    <div class="project-tabs">
+      <button class="tab-btn active" data-tab="delivered">Delivered</button>
+      <button class="tab-btn" data-tab="ongoing">Ongoing</button>
+      <button class="tab-btn" data-tab="other">Other work</button>
+    </div>
+
+    <div class="project-panels">
+
+      <!-- DELIVERED -->
+      <div class="project-panel active" data-panel="delivered">
+        <div class="project-grid">
+
+          <div class="project-card glass">
+            <div class="project-thumb thumb-1"></div>
+            <div class="project-body">
+              <span class="project-status status-live">Live</span>
+              <h3>The Daily Grind Café</h3>
+              <p>Full site rebuild with online ordering and a seasonal menu system. Replaced a five-year-old template site.</p>
+              <div class="project-tags"><span>Local Business</span><span>Booking</span></div>
+              <a href="#" class="project-link">View live site →</a>
+            </div>
+          </div>
+
+          <div class="project-card glass">
+            <div class="project-thumb thumb-2"></div>
+            <div class="project-body">
+              <span class="project-status status-live">Live</span>
+              <h3>Verde Skincare Studio</h3>
+              <p>Booking-first site for a local skincare studio, with service menus and appointment requests built in.</p>
+              <div class="project-tags"><span>Booking</span><span>Service Business</span></div>
+              <a href="#" class="project-link">View live site →</a>
+            </div>
+          </div>
+
+          <div class="project-card glass">
+            <div class="project-thumb thumb-3"></div>
+            <div class="project-body">
+              <span class="project-status status-live">Live</span>
+              <h3>Northbound Hardware Co.</h3>
+              <p>Lightweight catalog site for a family hardware store, plus three months of social media setup.</p>
+              <div class="project-tags"><span>Catalog</span><span>Social Media</span></div>
+              <a href="#" class="project-link">View live site →</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ONGOING -->
+      <div class="project-panel" data-panel="ongoing">
+        <div class="project-grid">
+
+          <div class="project-card glass">
+            <div class="project-thumb thumb-4"></div>
+            <div class="project-body">
+              <span class="project-status status-progress">In development</span>
+              <h3>Maple & Co. Florist</h3>
+              <p>Custom site with a seasonal bouquet builder and delivery-zone checkout, launching next month.</p>
+              <div class="project-tags"><span>E-commerce</span><span>Local Delivery</span></div>
+              <span class="project-link project-link-disabled">In progress</span>
+            </div>
+          </div>
+
+          <div class="project-card glass">
+            <div class="project-thumb thumb-5"></div>
+            <div class="project-body">
+              <span class="project-status status-progress">In development</span>
+              <h3>Riverside Dental Clinic</h3>
+              <p>Appointment-first redesign with patient intake forms and clearer service breakdowns.</p>
+              <div class="project-tags"><span>Healthcare</span><span>Booking</span></div>
+              <span class="project-link project-link-disabled">In progress</span>
+            </div>
+          </div>
+
+          <div class="project-card glass">
+            <div class="project-thumb thumb-6"></div>
+            <div class="project-body">
+              <span class="project-status status-progress">Launching soon</span>
+              <h3>Coastline Yoga Studio</h3>
+              <p>Class-schedule site with social media handover starting the same week as launch.</p>
+              <div class="project-tags"><span>Scheduling</span><span>Social Media</span></div>
+              <span class="project-link project-link-disabled">Launching soon</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- OTHER -->
+      <div class="project-panel" data-panel="other">
+        <div class="project-grid">
+
+          <div class="project-card glass">
+            <div class="project-thumb thumb-7"></div>
+            <div class="project-body">
+              <span class="project-status status-other">Personal project</span>
+              <h3>[Project Name — Add Details]</h3>
+              <p>[Short description of an earlier or freelance project worth showing here.]</p>
+              <div class="project-tags"><span>Tag</span><span>Tag</span></div>
+              <a href="#" class="project-link">View project →</a>
+            </div>
+          </div>
+
+          <div class="project-card glass">
+            <div class="project-thumb thumb-8"></div>
+            <div class="project-body">
+              <span class="project-status status-other">Freelance</span>
+              <h3>[Project Name — Add Details]</h3>
+              <p>[Short description — replace with a real freelance or student project.]</p>
+              <div class="project-tags"><span>Tag</span><span>Tag</span></div>
+              <a href="#" class="project-link">View project →</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="section contact-section" id="contact">
+  <div class="container">
+    <div class="contact-wrap glass">
+      <div class="contact-left">
+        <p class="eyebrow">Let's start</p>
+        <h2 class="section-title contact-title">Tell us about your business.</h2>
+        <p class="section-sub">We'll reply within one business day with next steps — no automated sales calls.</p>
+
+        <div class="contact-info">
+          <div class="contact-info-row">
+            <span class="contact-info-label">Email</span>
+            <a href="mailto:hello@lanternco.com">hello@lanternco.com</a>
+          </div>
+          <div class="contact-info-row">
+            <span class="contact-info-label">Phone</span>
+            <a href="tel:+910000000000">+91 00000 00000</a>
+          </div>
+          <div class="contact-info-row">
+            <span class="contact-info-label">Social</span>
+            <a href="#">@lanternco</a>
+          </div>
+        </div>
+      </div>
+
+      <form class="contact-form" id="contactForm">
+        <div class="form-row">
+          <label for="fname">Name</label>
+          <input type="text" id="fname" name="name" placeholder="Your name" required>
+        </div>
+        <div class="form-row">
+          <label for="femail">Email</label>
+          <input type="email" id="femail" name="email" placeholder="you@business.com" required>
+        </div>
+        <div class="form-row">
+          <label for="fbiz">Business type</label>
+          <input type="text" id="fbiz" name="business" placeholder="e.g. café, clinic, boutique">
+        </div>
+        <div class="form-row">
+          <label for="fmsg">Tell us about the project</label>
+          <textarea id="fmsg" name="message" rows="4" placeholder="What do you need help with?" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary form-submit">Send message</button>
+        <p class="form-note" id="formNote"></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="container footer-inner">
+    <span class="footer-logo">L&amp;Co.</span>
+    <p class="footer-tagline">Websites and social growth, built by three developers.</p>
+    <div class="footer-links">
+      <a href="#services">Services</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#team">Team</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <p class="footer-copy">© 2026 Lantern & Co. All rights reserved.</p>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
