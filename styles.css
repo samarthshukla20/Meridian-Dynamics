@@ -897,18 +897,7 @@ button, .btn, .nav-links a, .project-link, .team-link {
    RESPONSIVE QUERIES
    ============================================ */
 @media (max-width: 980px) {
-  .nav-links { display: none; }
-  .nav-burger { display: flex; }
-  .services-grid { grid-template-columns: repeat(2, 1fr); }
-  .pricing-grid { grid-template-columns: repeat(2, 1fr); }
-  .team-grid { grid-template-columns: 1fr; }
-  .project-grid { grid-template-columns: repeat(2, 1fr); }
-  .contact-wrap { grid-template-columns: 1fr; padding: 36px; }
-  .price-featured.glass { transform: none; }
-}
-
-@media (max-width: 768px) {
-  /* Premium Mobile Menu Overlay */
+  /* 1. TABLET MENU FIX: Apply full-screen menu logic here */
   .nav-links {
     position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
     background: rgba(255, 255, 255, 0.95);
@@ -919,11 +908,29 @@ button, .btn, .nav-links a, .project-link, .team-link {
     z-index: 99; display: flex !important;
   }
   .nav-links.menu-open { transform: translateY(0); }
-  .nav-cta { display: none; }
 
-  /* Navbar Docked to Top */
+  /* Dock navbar to top to fix the white gap on tablets */
   .nav-wrap { top: 0; padding: 0; }
   .nav { border-radius: 0; border-top: none; border-left: none; border-right: none; padding: 14px 24px; }
+  
+  /* Show hamburger */
+  .nav-burger { display: flex; }
+  
+  /* 2. UNCANNY BUTTON FIX: Hide it on tablets and smaller */
+  .nav-cta { display: none; }
+
+  /* Tablet Grids */
+  .services-grid { grid-template-columns: repeat(2, 1fr); }
+  .pricing-grid { grid-template-columns: repeat(2, 1fr); }
+  .team-grid { grid-template-columns: 1fr; }
+  .project-grid { grid-template-columns: repeat(2, 1fr); }
+  .contact-wrap { grid-template-columns: 1fr; padding: 36px; }
+  .price-featured.glass { transform: none; }
+}
+
+@media (max-width: 768px) {
+  /* Navbar Docked to Top (Mobile Only) */
+
   .nav-brand-name { font-size: 1.05rem; }
 
   /* Typography Scaling */
@@ -970,7 +977,7 @@ button, .btn, .nav-links a, .project-link, .team-link {
     grid-template-columns: 1fr; gap: 1.5rem;
   }
 
-/* Contact Form Adjustments */
+  /* Contact Form Adjustments */
   .contact-section { 
     padding: 60px 0 80px; 
   }
@@ -1013,7 +1020,7 @@ button, .btn, .nav-links a, .project-link, .team-link {
     margin-top: 1rem;
   }
 
-/* Footer Restructuring */
+  /* Footer Restructuring */
   .footer {
     padding: 3rem 1rem 2rem;
   }
