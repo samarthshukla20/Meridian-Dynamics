@@ -8,7 +8,10 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-app.use(cors());
+app.use(cors({
+  origin: '*',
+  methods: ['GET', 'POST', 'OPTIONS']
+}));
 app.use(express.json());
 
 // Routes
@@ -19,6 +22,12 @@ app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', agency: 'Meridian Dynamics' });
 });
 
-app.listen(PORT, () => {
-  console.log(`✓ Meridian Dynamics AI API running on http://localhost:${PORT}`);
-});
+// Run app.listen locally only
+if (process.env.NODE_ENV !== 'production') {
+  app.listen(PORT, () => {
+    console.log(`✓ Meridian Dynamics AI API running on http://localhost:${PORT}`);
+  });
+}
+
+// Export the app instance for Vercel Serverless
+export default app;
