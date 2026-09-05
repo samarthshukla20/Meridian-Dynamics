@@ -190,8 +190,14 @@ document.addEventListener('DOMContentLoaded', () => {
   // =========================================================
 
   // Change this to your deployed backend URL in production
-  const API_ENDPOINT =
-    'http://localhost:3000/api/chat';
+  // Automatically detect environment
+  const isLocalhost =
+    window.location.hostname === 'localhost' ||
+    window.location.hostname === '127.0.0.1';
+
+  const API_ENDPOINT = isLocalhost
+    ? 'http://localhost:3000/api/chat'
+    : 'https://meridian-atlas-backend.vercel.app/api/chat';
 
 
   // =========================================================
