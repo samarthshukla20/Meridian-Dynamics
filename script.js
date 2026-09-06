@@ -165,7 +165,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const planName = card ? card.querySelector('.price-name')?.innerText.trim() : 'Unknown';
       const planPrice = card ? card.querySelector('.price-amount')?.innerText.replace(/\s+/g, ' ').trim() : '';
 
-      trackEvent('select_item', {
+      trackEvent('get_started', {
         item_list_name: 'Pricing Plans',
         item_name: planName,
         price_tier: planPrice
