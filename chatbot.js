@@ -211,11 +211,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function closeAtlas() {
     windowEl.classList.remove('md-chat-open');
-
-    // GA: Track widget close
-    trackEvent('chat_close', {
-      event_category: 'Meridian Atlas'
-    });
   }
 
   closeBtn.addEventListener('click', closeAtlas);
@@ -329,11 +324,6 @@ Please try again in a moment or contact the Meridian Dynamics team directly.`
     // Copy
     actions.querySelector('.md-copy-btn').addEventListener('click', () => {
       navigator.clipboard.writeText(text);
-
-      // GA: Track response copied
-      trackEvent('chat_copy_message', {
-        event_category: 'Meridian Atlas'
-      });
 
       const btn = actions.querySelector('.md-copy-btn');
       btn.textContent = '✓';
@@ -490,87 +480,10 @@ Please try again in a moment or contact the Meridian Dynamics team directly.`
 
 
   // =========================================================
-  // MERIDIAN BUSINESS TOOLS
-  // =========================================================
-
-  document.querySelectorAll('.md-tool-btn').forEach(button => {
-    button.addEventListener('click', () => {
-      const tool = button.dataset.tool;
-
-      // GA: Track interest in unreleased tools
-      trackEvent('chat_tool_clicked', {
-        event_category: 'Meridian Atlas Tools',
-        tool_name: tool
-      });
-
-      if (tool === 'competitor') {
-        appendBotMessage(`
-**Competitor Finder**
-
-Discover the businesses competing for your customers.
-
-We'll analyze:
-
-• Local competitors
-• Google ratings
-• Review counts
-• Websites
-• Social presence
-• Local SEO
-
-**Coming soon to Meridian Business Tools.**
-        `);
-      }
-
-      if (tool === 'presence') {
-        appendBotMessage(`
-**Digital Presence Score**
-
-Get a complete overview of your business's online presence.
-
-We'll analyze:
-
-• Website
-• Google Business Profile
-• SEO
-• Reviews
-• Social media
-
-and generate a **Digital Presence Score out of 100.**
-
-**Coming soon to Meridian Business Tools.**
-        `);
-      }
-
-      if (tool === 'website') {
-        appendBotMessage(`
-**Website Health Check**
-
-We'll analyze your website for:
-
-• Performance
-• SEO
-• Mobile experience
-• User experience
-• Technical issues
-
-**Coming soon to Meridian Business Tools.**
-        `);
-      }
-    });
-  });
-
-
-  // =========================================================
   // CLEAR CHAT
   // =========================================================
 
   clearBtn.addEventListener('click', () => {
-    // GA: Track chat cleared
-    trackEvent('chat_cleared', {
-      event_category: 'Meridian Atlas'
-    });
-
     historyEl.innerHTML = `
       <div class="md-welcome">
         <div class="md-welcome-icon">✦</div>
