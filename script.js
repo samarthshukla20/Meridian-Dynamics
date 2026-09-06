@@ -4,6 +4,13 @@
 
 gsap.registerPlugin(ScrollTrigger);
 
+// Helper function to safely send gtag events
+function trackEvent(eventName, params = {}) {
+  if (typeof gtag === 'function') {
+    gtag('event', eventName, params);
+  }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
 
   // ---------- Hero entrance ----------
@@ -29,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ---------- Stat counters ----------
   document.querySelectorAll('.stat-num').forEach((el) => {
-    const target = parseFloat(el.dataset.count); // Changed to parseFloat to handle decimals like 99.9 or 5.0
+    const target = parseFloat(el.dataset.count);
     if (isNaN(target)) return;
 
     ScrollTrigger.create({
@@ -41,9 +48,8 @@ document.addEventListener('DOMContentLoaded', () => {
           textContent: target,
           duration: 1.4,
           ease: 'power2.out',
-          snap: { textContent: 1 }, // Note: if you want decimals to animate smoothly, you may need to adjust snap
+          snap: { textContent: 1 },
           onUpdate: function () {
-            // Keep original text if it has a decimal or symbol (like 99.9%), otherwise round
             if (el.dataset.count.includes('.')) {
               el.textContent = Number(this.targets()[0].textContent).toFixed(1);
             } else {
@@ -106,6 +112,12 @@ document.addEventListener('DOMContentLoaded', () => {
     btn.addEventListener('click', () => {
       const target = btn.dataset.tab;
 
+      // GA: Track Project Category Switch
+      trackEvent('select_content', {
+        content_type: 'project_tab',
+        item_id: target
+      });
+
       tabButtons.forEach((b) => b.classList.remove('active'));
       btn.classList.add('active');
 
@@ -131,6 +143,13 @@ document.addEventListener('DOMContentLoaded', () => {
   pricingButtons.forEach((btn) => {
     btn.addEventListener('click', () => {
       const target = btn.dataset.tab;
+
+      // GA: Track Pricing Category Switch
+      trackEvent('select_content', {
+        content_type: 'pricing_tab',
+        item_id: target
+      });
+
       pricingButtons.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
       pricingPanels.forEach(panel => {
@@ -139,19 +158,55 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // ---------- Mobile nav burger (Premium Slide-Down & Auto-Close) ----------
+  // ---------- Track Pricing Card CTA Clicks ----------
+  document.querySelectorAll('.price-card .btn').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const card = btn.closest('.price-card');
+      const planName = card ? card.querySelector('.price-name')?.innerText.trim() : 'Unknown';
+      const planPrice = card ? card.querySelector('.price-amount')?.innerText.replace(/\s+/g, ' ').trim() : '';
+
+      trackEvent('select_item', {
+        item_list_name: 'Pricing Plans',
+        item_name: planName,
+        price_tier: planPrice
+      });
+    });
+  });
+
+  // ---------- Track Outbound Portfolio / Client Links ----------
+  document.querySelectorAll('.project-link').forEach((link) => {
+    link.addEventListener('click', () => {
+      const card = link.closest('.project-card');
+      const projectName = card ? card.querySelector('h3')?.innerText.trim() : 'Unknown Project';
+
+      trackEvent('view_item', {
+        item_category: 'Portfolio',
+        item_name: projectName,
+        destination_url: link.href
+      });
+    });
+  });
+
+  // ---------- Track Direct Phone & Email Clicks ----------
+  document.querySelectorAll('a[href^="tel:"], a[href^="mailto:"]').forEach((link) => {
+    link.addEventListener('click', () => {
+      const isPhone = link.href.startsWith('tel:');
+      trackEvent('contact', {
+        method: isPhone ? 'Phone' : 'Email',
+        contact_detail: link.href.replace(/^(tel:|mailto:)/, '')
+      });
+    });
+  });
+
+  // ---------- Mobile nav burger ----------
   const burger = document.getElementById('navBurger');
   const navLinks = document.querySelector('.nav-links');
 
   if (burger && navLinks) {
     burger.addEventListener('click', () => {
-      // Toggle the menu visibility
       navLinks.classList.toggle('menu-open');
-
-      // Animate the burger icon into an 'X'
       burger.classList.toggle('active');
 
-      // Prevent background scrolling when menu is open
       if (navLinks.classList.contains('menu-open')) {
         document.body.style.overflow = 'hidden';
       } else {
@@ -159,21 +214,17 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    // Auto-close menu when a link is tapped
     const links = navLinks.querySelectorAll('a');
     links.forEach(link => {
       link.addEventListener('click', () => {
-        // Remove open classes
         navLinks.classList.remove('menu-open');
         burger.classList.remove('active');
-
-        // Restore background scrolling
         document.body.style.overflow = '';
       });
     });
   }
 
-  // ---------- Contact form (Web3Forms Integration) ----------
+  // ---------- Contact form (Web3Forms Integration + GA Conversion) ----------
   const form = document.getElementById('contactForm');
   const result = document.getElementById('formNote');
 
@@ -183,7 +234,6 @@ document.addEventListener('DOMContentLoaded', () => {
     form.addEventListener('submit', function (e) {
       e.preventDefault();
 
-      // UI Feedback: Let the user know it's sending
       const originalBtnText = submitButton.innerText;
       submitButton.innerText = 'Sending...';
       submitButton.style.opacity = '0.7';
@@ -202,36 +252,40 @@ document.addEventListener('DOMContentLoaded', () => {
         body: json
       })
         .then(async (response) => {
-          let json = await response.json();
+          let resJson = await response.json();
           if (response.status == 200) {
             // Success
             result.style.display = "block";
-            result.style.color = "#10b981"; // Success green
+            result.style.color = "#10b981";
             result.innerText = "Message sent successfully! We'll be in touch soon.";
             gsap.fromTo(result, { opacity: 0 }, { opacity: 1, duration: 0.4 });
+
+            // GA: Key Conversion Event
+            trackEvent('generate_lead', {
+              event_category: 'Contact',
+              event_label: object.business || 'General Inquiry'
+            });
+
             form.reset();
           } else {
             // Form endpoint error
             result.style.display = "block";
-            result.style.color = "#ef4444"; // Error red
-            result.innerText = json.message || "Something went wrong.";
+            result.style.color = "#ef4444";
+            result.innerText = resJson.message || "Something went wrong.";
             gsap.fromTo(result, { opacity: 0 }, { opacity: 1, duration: 0.4 });
           }
         })
         .catch(error => {
-          // Network error
           result.style.display = "block";
           result.style.color = "#ef4444";
           result.innerText = "Something went wrong! Please try again later.";
           gsap.fromTo(result, { opacity: 0 }, { opacity: 1, duration: 0.4 });
         })
         .finally(() => {
-          // Reset button state
           submitButton.innerText = originalBtnText;
           submitButton.style.opacity = '1';
           submitButton.style.pointerEvents = 'auto';
 
-          // Fade out and hide the message after 5 seconds
           setTimeout(() => {
             gsap.to(result, {
               opacity: 0,
@@ -248,7 +302,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const isCoarsePointer = window.matchMedia('(hover: none)').matches;
 
   if (!prefersReducedMotion && !isCoarsePointer) {
-    const maxTilt = 10; // degrees
+    const maxTilt = 10;
 
     document.querySelectorAll('.tilt').forEach((card) => {
       card.addEventListener('mousemove', (e) => {
