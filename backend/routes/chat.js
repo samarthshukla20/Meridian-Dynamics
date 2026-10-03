@@ -1,36 +1,157 @@
-import express from 'express';
-import { getQueryEmbedding, searchSimilarChunks } from '../services/vectorSearch.js';
-import { generateChatResponse } from '../services/llmService.js';
+import express from "express";
+
+import {
+  getQueryEmbedding,
+  searchSimilarChunks
+} from "../services/vectorSearch.js";
+
+import {
+  generateChatResponse
+} from "../services/llmService.js";
 
 const router = express.Router();
 
-router.post('/', async (req, res) => {
+const FALLBACK_REPLY =
+  "I don't have enough verified information to answer that confidently. Please contact the Meridian Dynamics team directly for a custom inquiry.";
+
+
+/* =========================================================
+   POST /api/chat
+   ========================================================= */
+
+router.post("/", async (req, res) => {
+
+  const startTime = Date.now();
+
   try {
-    const { message } = req.body;
 
-    if (!message || typeof message !== 'string') {
-      return res.status(400).json({ error: 'Valid message string is required.' });
-    }
+    /* -------------------------------------------------------
+       Validate input
+       ------------------------------------------------------- */
 
-    // 1. Generate 768-dim query embedding
-    const queryEmbedding = await getQueryEmbedding(message);
+    const message =
+      typeof req.body?.message === "string"
+        ? req.body.message.trim()
+        : "";
 
-    // 2. Query Supabase vector similarity
-    const chunks = await searchSimilarChunks(queryEmbedding, 4, 0.4);
+    if (!message) {
 
-    if (!chunks.length) {
-      return res.json({
-        reply: "I'm not completely certain about that specific detail. You can reach out directly to the Meridian Dynamics team for custom inquiries!"
+      return res.status(400).json({
+        error:
+          "Valid message string is required."
       });
     }
 
-    // 3. Generate response using retrieved context
-    const reply = await generateChatResponse(message, chunks);
+    if (message.length > 1000) {
 
-    return res.json({ reply });
+      return res.status(400).json({
+        error:
+          "Message is too long."
+      });
+    }
+
+
+    /* -------------------------------------------------------
+       STEP 1 — Query embedding
+       ------------------------------------------------------- */
+
+    const queryEmbedding =
+      await getQueryEmbedding(message);
+
+    console.log(
+      `[Atlas] Query embedded in ${
+        Date.now() - startTime
+      }ms`
+    );
+
+
+    /* -------------------------------------------------------
+       STEP 2 — Vector retrieval
+       ------------------------------------------------------- */
+
+    const chunks =
+      await searchSimilarChunks(
+        queryEmbedding,
+
+        /*
+         * Retrieve a few extra candidates.
+         */
+        6,
+
+        /*
+         * Start permissive and let the LLM
+         * decide using grounded context.
+         */
+        0.30
+      );
+
+    console.log(
+      `[Atlas] Retrieved ${chunks.length} chunks`
+    );
+
+
+    /* -------------------------------------------------------
+       STEP 3 — No relevant context
+       ------------------------------------------------------- */
+
+    if (!chunks.length) {
+
+      return res.json({
+        reply: FALLBACK_REPLY,
+        meta: {
+          retrieved: 0
+        }
+      });
+    }
+
+
+    /* -------------------------------------------------------
+       STEP 4 — Generate grounded response
+       ------------------------------------------------------- */
+
+    const reply =
+      await generateChatResponse(
+        message,
+        chunks
+      );
+
+
+    /* -------------------------------------------------------
+       STEP 5 — Response
+       ------------------------------------------------------- */
+
+    return res.json({
+      reply,
+
+      /*
+       * Keep this lightweight and useful for
+       * debugging during development.
+       *
+       * You can remove meta before production.
+       */
+      meta: {
+        retrieved: chunks.length,
+        sources: chunks.map(
+          chunk =>
+            chunk.metadata?.source ||
+            "unknown"
+        ),
+        latencyMs:
+          Date.now() - startTime
+      }
+    });
+
   } catch (error) {
-    console.error('Chat endpoint error:', error);
-    return res.status(500).json({ error: 'Internal server error while processing message.' });
+
+    console.error(
+      "[Atlas] Chat endpoint error:",
+      error
+    );
+
+    return res.status(500).json({
+      error:
+        "Internal server error while processing message."
+    });
   }
 });
 

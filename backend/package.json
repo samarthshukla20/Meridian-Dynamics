@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "ingest": "node rag/ingest.js"
+    "ingest": "node rag/ingest.js",
+    "test:rag": "node test-rag.js"
   },
   "description": "",
   "keywords": [],
