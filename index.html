@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Meridian Dynamics — Websites and social growth for local businesses</title>
+  <title>Meridian Dynamics — Digital Experiences That Matter</title>
 
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-PJLFCC1M4P"></script>
@@ -12,677 +12,655 @@
     window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
-
     gtag('config', 'G-PJLFCC1M4P');
   </script>
 
   <meta name="description"
-    content="Meridian Dynamics builds websites and manages social media for local businesses. Three developers, real results.">
+    content="Meridian Dynamics is a premium digital studio engineering websites, products, and growth infrastructure for modern businesses.">
 
   <link rel="icon" type="image/png" href="assets/favicon.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="chatbot.css">
   <link
-    href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,400..600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
     rel="stylesheet">
 
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="chatbot.css">
+
+  <style>
+    /* Premium floating navbar: full-width at the top, compact pill after scrolling. */
+    .nav-wrap {
+      transition: padding 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .nav-wrap .nav {
+      transition:
+        max-width 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+        min-height 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+        padding 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+        border-radius 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+        background 0.6s ease,
+        border-color 0.6s ease,
+        box-shadow 0.6s ease;
+    }
+
+    .nav-wrap.scrolled {
+      padding-left: 22px;
+      padding-right: 22px;
+    }
+
+    .nav-wrap.scrolled .nav {
+      max-width: 1080px;
+      min-height: 58px;
+      padding-left: 18px;
+      padding-right: 18px;
+      border-radius: 999px;
+      background: rgba(13, 13, 13, 0.78);
+      border-color: rgba(255, 255, 255, 0.10);
+      box-shadow: 0 16px 50px rgba(0, 0, 0, 0.28);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+    }
+
+    @media (max-width: 768px) {
+      .nav-wrap.scrolled {
+        padding-left: 12px;
+        padding-right: 12px;
+      }
+
+      .nav-wrap.scrolled .nav {
+        min-height: 54px;
+        padding-left: 14px;
+        padding-right: 14px;
+      }
+    }
+  </style>
 </head>
 
-<body>
-
-  <!-- Fixed mesh-gradient + dot-grid backdrop, visible through glass panels site-wide -->
-  <div class="site-mesh">
-    <div class="mesh-blob mesh-1"></div>
-    <div class="mesh-blob mesh-2"></div>
-    <div class="mesh-blob mesh-3"></div>
-    <div class="mesh-blob mesh-4"></div>
-    <div class="dot-grid"></div>
-  </div>
-
-  <!-- Grain / noise overlay for texture -->
+<body class="dark-theme">
+  <!-- Film Grain Overlay -->
   <div class="grain"></div>
 
-  <!-- ============ NAV ============ -->
-  <header class="nav-wrap">
-    <nav class="nav glass">
-      <a href="#top" class="nav-logo">
-        <img src="assets/logo.png" alt="Meridian Dynamics" class="nav-logo-mark" height="32">
-        <span class="nav-brand-name">Meridian Dynamics</span>
+  <!-- ============ FLOATING NAVBAR ============ -->
+  <header class="nav-wrap" id="navWrap">
+    <nav class="nav" id="mainNav">
+      <a href="#top" class="nav-logo" aria-label="Meridian Dynamics Home">
+        <img src="assets/logo.png" alt="Meridian Dynamics" class="nav-logo-mark" height="26">
+        <span class="nav-brand-name">MERIDIAN DYNAMICS</span>
       </a>
-      <ul class="nav-links">
-        <li><a href="#services">Services</a></li>
-        <li><a href="#projects">Work</a></li>
-        <li><a href="#pricing">Pricing</a></li>
-        <li><a href="team.html">Team</a></li>
-        <li><a href="#faq">FAQ</a></li>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#work" class="nav-link">Work</a></li>
+        <li><a href="#services" class="nav-link">Services</a></li>
+        <li><a href="#process" class="nav-link">Process</a></li>
+        <li><a href="#pricing" class="nav-link">Pricing</a></li>
+        <li><a href="team.html" class="nav-link">Team</a></li>
+        <li><a href="#contact" class="nav-link nav-link-mobile-cta">Start a project</a></li>
       </ul>
-      <a href="#contact" class="nav-cta">Get a quote</a>
-      <button class="nav-burger" id="navBurger" aria-label="Open menu">
-        <span></span><span></span><span></span>
-      </button>
+
+      <div class="nav-right">
+        <a href="#contact" class="nav-cta">
+          <span>Start a project</span>
+          <svg class="nav-cta-arrow" width="12" height="12" viewBox="0 0 12 12" fill="none">
+            <path d="M2.5 9.5L9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="currentColor" stroke-width="1.5"
+              stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </a>
+        <button class="nav-burger" id="navBurger" aria-label="Toggle navigation menu">
+          <span></span><span></span>
+        </button>
+      </div>
     </nav>
   </header>
 
-  <!-- ============ HERO ============ -->
+  <!-- ============ 01 — HERO (Main Visual Moment) ============ -->
   <section class="hero" id="top">
-    <div class="hero-bg">
-      <div class="hero-blob blob-1"></div>
-      <div class="hero-blob blob-2"></div>
-      <div class="hero-blob blob-3"></div>
+
+    <!-- Full-bleed cinematic hero video -->
+    <div class="hero-video" aria-hidden="true">
+      <video class="hero-video-media" autoplay muted loop playsinline preload="auto" poster="/images/hero-poster.jpg">
+        <source src="/assets/hero-vid.mp4" type="video/mp4">
+      </video>
+      <div class="hero-video-overlay"></div>
     </div>
 
-    <div class="hero-inner">
+    <!-- Soft Radial Gradient Mask for Negative Space -->
+    <div class="hero-backdrop"></div>
+
+    <!-- Hero Content (Spacious Central Negative Space) -->
+    <div class="hero-content">
 
       <h1 class="hero-title">
-        <span class="line">We engineer the website</span>
-        <span class="line">your business deserves<span class="hero-dot">.</span></span>
+        <span class="hero-line reveal-hero">We build</span>
+        <span class="hero-line hero-serif reveal-hero">digital presences</span>
+        <span class="hero-line reveal-hero">that matter.</span>
       </h1>
 
-      <p class="hero-sub">
-        Meridian Dynamics builds high-performance digital infrastructure and manages social growth for modern
-        businesses—turning casual visitors into loyal clients.
+      <p class="hero-subhead reveal-hero">
+
       </p>
 
-      <div class="hero-actions">
-        <a href="#contact" class="btn btn-primary">Get a free quote</a>
-        <a href="#projects" class="btn btn-ghost">See our work</a>
+      <div class="hero-actions reveal-hero">
+        <a href="#contact" class="btn btn-primary">
+          <span>Start a project</span>
+          <span class="btn-arrow">→</span>
+        </a>
+        <a href="#work" class="btn btn-ghost">
+          <span>Explore work</span>
+        </a>
       </div>
+    </div>
 
-      <div class="hero-stats glass">
-        <div class="stat">
-          <span class="stat-num" data-count="14">0</span>
-          <span class="stat-label">Projects made</span>
+    <!-- Hero Bottom Status -->
+    <div class="hero-bottom-bar reveal-hero">
+      <div class="hero-status-pill">
+      </div>
+      <div class="scroll-prompt">
+        <span class="scroll-text">Scroll to explore</span>
+        <div class="scroll-line-track">
+          <div class="scroll-line-thumb"></div>
         </div>
-        <div class="stat-divider"></div>
-        <div class="stat">
-          <span class="stat-num" data-count="2">0</span>
-          <span class="stat-label">In progress now</span>
-        </div>
-        <div class="stat-divider"></div>
-        <div class="stat">
-          <span class="stat-num" data-count="5">0</span>
-          <span class="stat-label">Star Client Rating</span>
-        </div>
+      </div>
+      <div class="hero-counter">
+        <span class="counter-curr">01</span>
+        <span class="counter-div">/</span>
+        <span class="counter-total">07</span>
       </div>
     </div>
   </section>
 
-  <!-- ============ MARQUEE STRIP ============ -->
-  <div class="marquee">
-    <div class="marquee-track">
-      <span>Local-first design</span><span class="sep">/</span>
-      <span>Fast, lightweight sites</span><span class="sep">/</span>
-      <span>Social media that sounds human</span><span class="sep">/</span>
-      <span>Built by three developers</span><span class="sep">/</span>
-      <span>Local-first design</span><span class="sep">/</span>
-      <span>Fast, lightweight sites</span><span class="sep">/</span>
-      <span>Social media that sounds human</span><span class="sep">/</span>
-      <span>Built by three developers</span><span class="sep">/</span>
+  <!-- ============ 02 — STATEMENT SECTION ============ -->
+  <section class="section statement-section" id="statement">
+    <div class="container statement-container">
+      <div class="statement-eyebrow reveal-statement">
+        <span class="mono-num">02</span>
+        <span class="mono-sep">—</span>
+        <span>THE PRINCIPLE</span>
+      </div>
+
+      <blockquote class="statement-quote">
+        <p class="statement-line reveal-statement">Your website isn't a brochure.</p>
+        <p class="statement-line statement-accent reveal-statement">It's your best salesperson.</p>
+      </blockquote>
+
+      <div class="statement-subtext reveal-statement">
+        <span class="statement-tag">WE DESIGN FOR WHAT HAPPENS NEXT.</span>
+        <p class="statement-desc">
+          Most agency websites look like everyone else’s. We replace generic templates with bespoke digital craft that
+          commands premium attention and converts visitors into loyal clients.
+        </p>
+      </div>
     </div>
-  </div>
+  </section>
 
-  <!-- ============ SERVICES ============ -->
-  <section class="section" id="services">
+  <!-- ============ 03 — TRANSFORMATION SECTION ============ -->
+  <section class="section transform-section" id="transform">
     <div class="container">
-      <p class="eyebrow">What we do</p>
-      <h2 class="section-title">Everything your business needs online, <em>nothing it doesn't.</em></h2>
 
-      <div class="services-grid">
-
-        <div class="service-card glass reveal-up tilt">
-          <div class="service-icon">
-            <svg viewBox="0 0 24 24" fill="none">
-              <path
-                d="M3 5.5C3 4.67 3.67 4 4.5 4h15c.83 0 1.5.67 1.5 1.5v13c0 .83-.67 1.5-1.5 1.5h-15A1.5 1.5 0 0 1 3 18.5v-13Z"
-                stroke="currentColor" stroke-width="1.4" />
-              <path d="M3 8.5h18" stroke="currentColor" stroke-width="1.4" />
-              <circle cx="5.6" cy="6.2" r=".7" fill="currentColor" />
-              <circle cx="7.6" cy="6.2" r=".7" fill="currentColor" />
-            </svg>
-          </div>
-          <h3>Website design & build</h3>
-          <p>Custom-built sites — not templates with your logo slapped on. Fast, clean, and built to convert visitors
-            into customers.</p>
-          <ul class="service-list">
-            <li>Responsive, mobile-first builds</li>
-            <li>Booking / contact integrations</li>
-            <li>Light e-commerce setups</li>
-          </ul>
+      <div class="section-header text-center">
+        <div class="section-tag reveal-up">
+          <span class="mono-num">03</span>
+          <span class="mono-sep">—</span>
+          <span>TRANSFORMATION</span>
         </div>
 
-        <div class="service-card glass reveal-up tilt">
-          <div class="service-icon">
-            <svg viewBox="0 0 24 24" fill="none">
-              <path
-                d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"
-                stroke="currentColor" stroke-width="1.4" stroke-linecap="round" />
-              <circle cx="12" cy="12" r="3.2" stroke="currentColor" stroke-width="1.4" />
-            </svg>
+        <h2 class="section-title reveal-up">
+          From outdated to <span class="title-serif">unmistakable.</span>
+        </h2>
+
+        <p class="section-subtitle reveal-up">
+          Real transformations. Before: cluttered templates lost in the noise.
+          After: cinematic editorial clarity that commands respect.
+        </p>
+      </div>
+
+
+      <!-- BEFORE / AFTER SLIDER -->
+      <div class="transform-frame reveal-up">
+
+        <!-- Browser Chrome -->
+        <div class="transform-browser-bar">
+
+          <div class="browser-dots">
+            <span></span>
+            <span></span>
+            <span></span>
           </div>
-          <h3>Maintenance & support</h3>
-          <p>Sites stay fast, secure, and current. We handle the updates, backups, and small fixes so you don't have to
-            think about it.</p>
-          <ul class="service-list">
-            <li>Monthly health checks</li>
-            <li>Content & copy updates</li>
-            <li>Priority bug fixes</li>
-          </ul>
+
+          <div class="browser-url">
+            <span class="browser-lock">🔒</span>
+            <span class="browser-url-text">
+              meridiandynamics.online/transformation
+            </span>
+          </div>
+
+          <div class="browser-actions">
+            <span></span>
+            <span></span>
+          </div>
+
         </div>
 
-        <div class="service-card glass reveal-up tilt">
-          <div class="service-icon">
-            <svg viewBox="0 0 24 24" fill="none">
-              <path d="M7 17v-5M12 17V8M17 17v-9" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" />
-              <rect x="3" y="3" width="18" height="18" rx="3" stroke="currentColor" stroke-width="1.4" />
-            </svg>
+
+        <!-- Slider -->
+        <div class="transform-viewport" id="transformSlider" aria-label="Before and after website comparison">
+
+          <!-- BEFORE -->
+          <div class="transform-layer transform-before">
+
+            <img src="assets/transform_old.jpg" alt="Website before transformation" class="transform-img"
+              draggable="false">
+
+            <div class="transform-badge badge-before">
+              <span class="badge-dot-red"></span>
+              BEFORE · GENERIC TEMPLATE
+            </div>
+
+            <div class="transform-overlay-text overlay-before">
+              <h3>Cluttered. Forgettable. Low-converting.</h3>
+              <p>
+                Slow load times, fragmented messaging, zero brand distinction.
+              </p>
+            </div>
+
           </div>
-          <h3>Social media management</h3>
-          <p>Posts, captions, and a content calendar that actually sounds like your business — not a marketing template.
+
+
+          <!-- AFTER -->
+          <div class="transform-layer transform-after" id="transformAfter">
+
+            <img src="assets/transform_new.jpg" alt="Website after transformation" class="transform-img"
+              draggable="false">
+
+            <div class="transform-badge badge-after">
+              <span class="badge-dot-green"></span>
+              AFTER · BESPOKE DIGITAL STUDIO
+            </div>
+
+            <div class="transform-overlay-text overlay-after">
+              <h3>Cinematic. Confident. Unmistakable.</h3>
+              <p>
+                Ultra-fast performance, razor-sharp typography, high conversion.
+              </p>
+            </div>
+
+          </div>
+
+
+          <!-- SLIDER DIVIDER -->
+          <div class="transform-handle" id="transformHandle" role="slider" aria-label="Before and after comparison"
+            aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" tabindex="0">
+
+            <div class="transform-handle-line"></div>
+
+            <div class="transform-handle-button">
+
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="15 18 9 12 15 6"></polyline>
+                <polyline points="9 18 3 12 9 6"></polyline>
+              </svg>
+
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+
+      <!-- Transformation Milestones -->
+      <div class="transform-milestones reveal-up">
+
+        <div class="milestone-item">
+          <span class="milestone-num">01</span>
+          <span class="milestone-label">Strategy</span>
+          <p class="milestone-text">
+            Auditing friction points & positioning your brand as the definitive leader.
           </p>
-          <ul class="service-list">
-            <li>Content calendars</li>
-            <li>Reels / post design</li>
-            <li>Basic ad campaign setup</li>
-          </ul>
         </div>
 
-        <div class="service-card glass reveal-up tilt">
-          <div class="service-icon">
-            <svg viewBox="0 0 24 24" fill="none">
-              <path d="M11 19a8 8 0 1 0 0-16 8 8 0 0 0 0 16Z" stroke="currentColor" stroke-width="1.4" />
-              <path d="M21 21l-3.5-3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" />
-            </svg>
-          </div>
-          <h3>Local SEO & visibility</h3>
-          <p>Show up when nearby customers search. We tune your site and listings so local search works for you, not
-            against you.</p>
-          <ul class="service-list">
-            <li>Google Business optimization</li>
-            <li>On-page SEO setup</li>
-            <li>Local keyword targeting</li>
-          </ul>
+        <div class="milestone-item">
+          <span class="milestone-num">02</span>
+          <span class="milestone-label">Design</span>
+          <p class="milestone-text">
+            Bespoke editorial layouts with Apple-inspired restraint and typography.
+          </p>
         </div>
 
+        <div class="milestone-item">
+          <span class="milestone-num">03</span>
+          <span class="milestone-label">Engineering</span>
+          <p class="milestone-text">
+            Clean, lightning-fast architecture scoring 100/100 on Core Web Vitals.
+          </p>
+        </div>
+
+        <div class="milestone-item">
+          <span class="milestone-num">04</span>
+          <span class="milestone-label">Growth</span>
+          <p class="milestone-text">
+            Local search prominence, conversion tracking, and audience acquisition.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+
+  <!-- ============ 04 — MERIDIAN DIFFERENCE ============ -->
+  <section class="section difference-section" id="difference">
+    <div class="container difference-container">
+      <div class="difference-tag reveal-up">
+        <span class="mono-num">04</span>
+        <span class="mono-sep">—</span>
+        <span>THE DIFFERENCE</span>
+      </div>
+
+      <div class="difference-mantra" id="differenceMantra">
+        <div class="mantra-line" data-line="1">Not another agency.</div>
+        <div class="mantra-line" data-line="2">No templates.</div>
+        <div class="mantra-line" data-line="3">No hand-offs.</div>
+        <div class="mantra-line" data-line="4">No jargon.</div>
+        <div class="mantra-line mantra-highlight" data-line="5">Just good work.</div>
+      </div>
+
+      <div class="difference-subtext reveal-up">
+        <p>
+          You work directly with the senior designers and engineers who write every line of code. No account managers,
+          no junior handoffs, no fluff.
+        </p>
       </div>
     </div>
   </section>
 
-  <!-- ============ PROCESS ============ -->
-  <section class="section" id="process">
+  <!-- ============ 05 — PROCESS ============ -->
+  <section class="section process-section" id="process">
     <div class="container">
-      <p class="eyebrow">How we work</p>
-      <h2 class="section-title">A transparent, <em>no-headache</em> process.</h2>
-
-      <div class="process-grid">
-        <div class="process-step glass tilt">
-          <span class="step-num">01</span>
-          <h3>Discovery</h3>
-          <p>We start by understanding your business goals, target audience, and current bottlenecks. No technical
-            jargon, just a conversation about your needs.</p>
+      <div class="section-header text-center">
+        <div class="section-tag reveal-up">
+          <span class="mono-num">05</span>
+          <span class="mono-sep">—</span>
+          <span>METHODOLOGY</span>
         </div>
-        <div class="process-step glass tilt">
-          <span class="step-num">02</span>
-          <h3>Strategy & Design</h3>
-          <p>We map out the architecture and design a clean, minimalist interface tailored to convert your local traffic
-            into actual customers.</p>
-        </div>
-        <div class="process-step glass tilt">
-          <span class="step-num">03</span>
-          <h3>Engineering</h3>
-          <p>Our developers build your platform with clean, performance-optimized code to ensure fast load times and
-            seamless integrations.</p>
-        </div>
-        <div class="process-step glass tilt">
-          <span class="step-num">04</span>
-          <h3>Launch & Scale</h3>
-          <p>We test everything strictly, push the site live, and optionally take over your social channels to start
-            driving immediate traffic.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ PRICING ============ -->
-  <section class="section section-alt" id="pricing">
-    <div class="container">
-      <p class="eyebrow">Plans</p>
-      <h2 class="section-title">Pricing that scales <em>with your business,</em> not against it.</h2>
-      <p class="section-sub">Every project includes strategy, development, deployment, and post-launch support. Choose
-        the plan that best fits your business.</p>
-
-      <div class="pricing-tabs">
-        <button class="pricing-tab-btn active" data-tab="website">Website Development</button>
-        <button class="pricing-tab-btn" data-tab="social">Social Growth</button>
+        <h2 class="section-title reveal-up">
+          Four steps to <span class="title-serif">clarity.</span>
+        </h2>
+        <p class="section-subtitle reveal-up">
+          A disciplined, zero-friction progression from strategic discovery to high-impact launch.
+        </p>
       </div>
 
-      <div class="pricing-panel active" data-panel="website">
-        <div class="pricing-grid">
+      <!-- Interactive Process Timeline -->
+      <div class="process-interactive reveal-up" id="processInteractive">
+        <div class="process-track">
+          <div class="process-track-fill" id="processTrackFill"></div>
+        </div>
 
-          <!-- Essential -->
-          <div class="price-card glass reveal-up">
-            <h3 class="price-name">Essential</h3>
-            <p class="price-desc">Everything you need to launch professionally.</p>
-
-            <div class="price-amount">
-              <span class="curr">₹</span>11,999
-              <span class="price-period">Maintenance from <strong>₹999/mo</strong></span>
+        <div class="process-nodes">
+          <div class="process-node active" data-step="1">
+            <div class="node-marker">
+              <span class="node-dot"></span>
+              <span class="node-index">01</span>
             </div>
-
-            <ul class="price-features">
-              <li>Custom Website Tailored to Your Brand</li>
-              <li>Responsive Across All Devices</li>
-              <li>Performance Optimized</li>
-              <li>Lead Capture & Contact Forms</li>
-              <li>SEO-Ready Structure & Google Indexing</li>
-              <li>30 Days of Post-Launch Support</li>
-            </ul>
-
-            <a href="#contact" class="btn btn-outline">Get Started</a>
+            <div class="node-header">DISCOVER</div>
+            <p class="node-desc">We unpack your business economics, customer psychology, and competitive landscape.</p>
           </div>
 
-          <!-- Professional -->
-          <div class="price-card glass price-featured reveal-up">
-            <span class="price-tag">Most Popular</span>
-
-            <h3 class="price-name">Professional</h3>
-            <p class="price-desc">Built for businesses ready to grow.</p>
-
-            <div class="price-amount">
-              <span class="curr">₹</span>17,999
-              <span class="price-period">Maintenance from <strong>₹1,999/mo</strong></span>
+          <div class="process-node" data-step="2">
+            <div class="node-marker">
+              <span class="node-dot"></span>
+              <span class="node-index">02</span>
             </div>
-
-            <ul class="price-features">
-              <li>Everything in Essential</li>
-              <li>Google Business Profile Optimization</li>
-              <li>Local SEO Setup & Optimization</li>
-              <li>Competitor Analysis & Market Review</li>
-              <li>Conversion-Optimized User Experience</li>
-              <li>Advanced Performance Optimization</li>
-              <li>90 Days of Priority Assistance</li>
-            </ul>
-
-            <a href="#contact" class="btn btn-primary">Get Started</a>
-          </div>
-
-          <!-- Signature -->
-          <div class="price-card glass reveal-up">
-            <h3 class="price-name">Signature</h3>
-            <p class="price-desc">A complete digital presence, handled for you.</p>
-
-            <div class="price-amount">
-              <span class="curr">₹</span>23,999
-              <span class="price-period">Maintenance from <strong>₹3,999/mo</strong></span>
-            </div>
-
-            <ul class="price-features">
-              <li>Everything in Professional</li>
-              <li>Professional Business Photography</li>
-              <li>Advanced Technical & Local SEO</li>
-              <li>Competitor Monitoring & Growth Strategy</li>
-              <li>Website Analytics & Performance Reports</li>
-              <li>Monthly Maintenance & Security Updates</li>
-              <li>Dedicated Priority Support</li>
-            </ul>
-
-            <a href="#contact" class="btn btn-outline">Get Started</a>
-          </div>
-
-          <!-- Custom -->
-          <div class="price-card glass price-custom reveal-up">
-            <h3 class="price-name">Custom</h3>
-            <p class="price-desc">
-              Multi-location, e-commerce, or a unique solution tailored to your business goals.
+            <div class="node-header">DESIGN</div>
+            <p class="node-desc">We craft a distinct visual language with generous whitespace and editorial typography.
             </p>
+          </div>
 
-            <div class="price-amount price-amount-custom">
-              Custom Quote
+          <div class="process-node" data-step="3">
+            <div class="node-marker">
+              <span class="node-dot"></span>
+              <span class="node-index">03</span>
             </div>
-
-            <ul class="price-features">
-              <li>Tailored Scope & Timeline</li>
-              <li>Flexible Project or Monthly Pricing</li>
-              <li>Strategy Built Around Your Business Goals</li>
-            </ul>
-
-            <a href="#contact" class="btn btn-outline">Get a custom quote</a>
+            <div class="node-header">BUILD</div>
+            <p class="node-desc">Handcrafted code, sub-second response times, and bulletproof security protocols.</p>
           </div>
 
-        </div>
-      </div>
-
-      <div class="pricing-panel" data-panel="social">
-        <div class="pricing-grid">
-
-          <div class="price-card glass reveal-up">
-            <h3 class="price-name">Foundation</h3>
-            <p class="price-desc">Build your brand's online presence.</p>
-            <div class="price-amount"><span class="curr">₹</span>9,999/mo<span class="price-period"></span></div>
-            <ul class="price-features">
-              <li>12 Short-form Reels / month</li>
-              <li>Content planning & scripting</li>
-              <li>Basic reel editing</li>
-              <li>Instagram profile optimization</li>
-              <li>Weekly performance report</li>
-            </ul>
-            <a href="#contact" class="btn btn-outline">Get Started</a>
-          </div>
-
-          <div class="price-card glass price-featured reveal-up">
-            <span class="price-tag">Most popular</span>
-            <h3 class="price-name">Momentum</h3>
-            <p class="price-desc">Accelerate your reach and engagement.</p>
-            <div class="price-amount"><span class="curr">₹</span>14,999/mo<span class="price-period"></span>
+          <div class="process-node" data-step="4">
+            <div class="node-marker">
+              <span class="node-dot"></span>
+              <span class="node-index">04</span>
             </div>
-            <ul class="price-features">
-              <li>16 Short-form Reels / month</li>
-              <li>Market research & content strategy</li>
-              <li>Advanced cinematic editing</li>
-              <li>Competitor analysis</li>
-              <li>Videography assistance</li>
-              <li>Weekly analytics & insights</li>
-            </ul>
-            <a href="#contact" class="btn btn-primary">Get Started</a>
-          </div>
-
-          <div class="price-card glass reveal-up">
-            <h3 class="price-name">Dominance</h3>
-            <p class="price-desc">Own your niche with consistent content.</p>
-            <div class="price-amount"><span class="curr">₹</span>24,999/mo<span class="price-period"></span></div>
-            <ul class="price-features">
-              <li>20 Premium Reels / month</li>
-              <li>Complete content strategy</li>
-              <li>Premium editing & motion graphics</li>
-              <li>Competitor & trend monitoring</li>
-              <li>Videography assistance</li>
-              <li>Weekly growth reporting</li>
-              <li>Priority support</li>
-
-            </ul>
-            <a href="#contact" class="btn btn-outline">Get Started</a>
-          </div>
-
-          <div class="price-card glass price-custom reveal-up">
-            <h3 class="price-name">Custom</h3>
-            <p class="price-desc">Multi-location, e-commerce, or something else entirely, let's talk it through.</p>
-            <div class="price-amount price-amount-custom">Let's talk</div>
-            <ul class="price-features">
-              <li>Tailored scope & timeline</li>
-              <li>Flexible monthly or project pricing</li>
-              <li>Built around your actual goals</li>
-            </ul>
-            <a href="#contact" class="btn btn-outline">Get a custom quote</a>
+            <div class="node-header">GROW</div>
+            <p class="node-desc">Continuous monitoring, Google search optimization, and social audience scaling.</p>
           </div>
         </div>
-      </div>
-
-
-    </div>
-    </div>
-  </section>
-
-  <!-- ============ PROJECTS ============ -->
-
-
-  <section class="section section-alt" id="projects">
-    <div class="container">
-      <p class="eyebrow">Our capabilities</p>
-      <h2 class="section-title">Engineered for <em>performance.</em></h2>
-
-      <div class="project-tabs">
-        <button class="tab-btn active" data-tab="other">Advanced Tech</button>
-        <button class="tab-btn" data-tab="delivered">Client Sites</button>
-        <button class="tab-btn" data-tab="ongoing">Ongoing</button>
-      </div>
-
-      <div class="project-panels">
-
-        <!-- ADVANCED TECH (OTHER) -->
-        <div class="project-panel active" data-panel="other">
-          <div class="project-grid">
-
-            <div class="project-card glass">
-              <div class="project-thumb thumb-7"></div>
-              <div class="project-body">
-                <span class="project-status status-live">Live App</span>
-                <h3>Pro Typer</h3>
-                <p>A mobile application engineered for high engagement, successfully scaling to over 3,000 active
-                  downloads globally.</p>
-                <div class="project-tags"><span>Mobile Dev</span><span>Scaling</span></div>
-                <a href="https://play.google.com/store/apps/details?id=com.samarthshukla.protyper&pcampaignid=web_share"
-                  class="project-link">View project →</a>
-              </div>
-            </div>
-
-            <div class="project-card glass">
-              <div class="project-thumb thumb-8"></div>
-              <div class="project-body">
-                <span class="project-status status-progress">Platform Build</span>
-                <h3>SehatSaathi</h3>
-                <p>A comprehensive healthcare management platform featuring secure doctor portals and patient data
-                  systems.</p>
-                <div class="project-tags"><span>Healthcare</span><span>Full-Stack</span></div>
-                <a href="https://sehatsaathi-med.vercel.app/" class="project-link">View project →</a>
-              </div>
-            </div>
-
-            <div class="project-card glass">
-              <div class="project-thumb thumb-9"></div>
-              <div class="project-body">
-                <span class="project-status status-live">AI Integration</span>
-                <h3>FarmShield</h3>
-                <p>An advanced agricultural platform utilizing machine learning for automated crop disease detection via
-                  leaf scanning.</p>
-                <div class="project-tags"><span>Machine Learning</span><span>API</span></div>
-                <a href="https://farmshieldai.vercel.app/" class="project-link">View project →</a>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
-        <!-- CLIENT SITES (DELIVERED) -->
-        <div class="project-panel" data-panel="delivered">
-          <div class="project-grid">
-
-            <div class="project-card glass">
-              <div class="project-thumb thumb-1"></div>
-              <div class="project-body">
-                <span class="project-status status-live">Live</span>
-                <h3>Muscle Master Gym</h3>
-                <p>Full site rebuild with excellent SEO and real results. Replaced a five-year-old template site.</p>
-                <div class="project-tags"><span>Local Business</span><span>SEO</span></div>
-                <a href="https://musclemastergym.fit/" class="project-link">View live site →</a>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
-        <!-- ONGOING -->
-        <div class="project-panel" data-panel="ongoing">
-          <div class="project-grid">
-
-            <div class="project-card glass">
-              <div class="project-thumb thumb-4"></div>
-              <div class="project-body">
-                <span class="project-status status-progress">In development</span>
-                <h3>Sri Balaji Dental Care</h3>
-                <p>Custom site with site-wide SEO and Social Growth, launching next month.</p>
-                <div class="project-tags"><span>Local Business</span><span>Social Growth</span></div>
-                <span class="project-link project-link-disabled">In progress</span>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
       </div>
     </div>
   </section>
 
-  <!-- ============ CONTACT ============ -->
+  <!-- ============ 06 — CONTACT / FINAL CTA ============ -->
   <section class="section contact-section" id="contact">
-    <div class="container">
-      <div class="contact-wrap glass">
-        <div class="contact-left">
-          <p class="eyebrow">Let's start</p>
-          <h2 class="section-title contact-title">Tell us about your business.</h2>
-          <p class="section-sub">We'll reply within one business day with next steps — no automated sales calls.</p>
+    <div class="container contact-container">
+      <div class="contact-hero reveal-up">
+        <div class="section-tag">
+          <span class="mono-num">06</span>
+          <span class="mono-sep">—</span>
+          <span>LET'S CONNECT</span>
+        </div>
+        <h2 class="contact-big-title">
+          LET'S BUILD<br>
+          <span class="title-serif">SOMETHING GOOD.</span>
+        </h2>
+        <p class="contact-lead">
+          Tell us about your brand, what you're building, and where you want to go. We respond within 24 hours.
+        </p>
 
-          <div class="contact-info">
-            <div class="contact-info-row">
-              <span class="contact-info-label">Email</span>
-              <a href="mailto:meridiandynamics.online@gmail.com">meridiandynamics.online@gmail.com</a>
-            </div>
-            <div class="contact-info-row">
-              <span class="contact-info-label">Phone</span>
-              <a href="tel:+918799312003">+91 87993 12003</a>
-            </div>
-            <div class="contact-info-row">
-              <span class="contact-info-label">Social</span>
-              <a href="https://instagram.com/meridiandynamics.online">@meridiandynamics.online</a>
-            </div>
-          </div>
+        <div class="contact-direct-links">
+          <a href="mailto:meridiandynamics.online@gmail.com" class="contact-pill">
+            <span class="pill-label">EMAIL</span>
+            <span class="pill-value">meridiandynamics.online@gmail.com</span>
+          </a>
+          <a href="tel:+918799312003" class="contact-pill">
+            <span class="pill-label">PHONE</span>
+            <span class="pill-value">+91 87993 12003</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Minimal High-Design Contact Form -->
+      <div class="contact-form-card reveal-up">
+        <div class="form-header">
+          <span class="form-title">Project Inquiry</span>
+          <span class="form-status">Available for work</span>
         </div>
 
         <form class="contact-form" id="contactForm" action="https://api.web3forms.com/submit" method="POST">
-          <!-- IMPORTANT: Replace the value below with your actual Web3Forms Access Key -->
           <input type="hidden" name="access_key" value="38dec284-9ba5-4fca-9e8a-9088d27cffe9">
-          <!-- Optional: Keeps the user on your site instead of redirecting -->
           <input type="hidden" name="redirect" value="false">
-          <div class="form-row">
-            <label for="fname">Name</label>
-            <input type="text" id="fname" name="name" placeholder="Your name" required>
+
+          <div class="form-group">
+            <label for="fname">Your Name</label>
+            <input type="text" id="fname" name="name" placeholder="Johnathan Doe" required autocomplete="name">
           </div>
-          <div class="form-row">
-            <label for="femail">Email</label>
-            <input type="email" id="femail" name="email" placeholder="you@business.com" required>
+
+          <div class="form-group">
+            <label for="femail">Email Address</label>
+            <input type="email" id="femail" name="email" placeholder="john@company.com" required autocomplete="email">
           </div>
-          <div class="form-row">
-            <label for="fbiz">Business type</label>
-            <input type="text" id="fbiz" name="business" placeholder="e.g. café, clinic, boutique">
+
+          <div class="form-group">
+            <label for="fbiz">Business / Industry</label>
+            <input type="text" id="fbiz" name="business" placeholder="e.g. Specialty Café, Boutique, Fitness Studio">
           </div>
-          <div class="form-row">
-            <label for="fmsg">Tell us about the project</label>
-            <textarea id="fmsg" name="message" rows="4" placeholder="What do you need help with?" required></textarea>
+
+          <div class="form-group">
+            <label for="fmsg">Project Scope & Timeline</label>
+            <textarea id="fmsg" name="message" rows="4" placeholder="Briefly describe what you want to achieve..."
+              required></textarea>
           </div>
-          <button type="submit" class="btn btn-primary form-submit">Send message</button>
+
+          <button type="submit" class="btn btn-primary form-submit-btn">
+            <span>Send inquiry</span>
+            <span class="btn-arrow">→</span>
+          </button>
+
           <p class="form-note" id="formNote"></p>
         </form>
       </div>
     </div>
   </section>
 
-  <!-- ============ FAQ ============ -->
-  <section class="section section-alt" id="faq">
+  <!-- ============ 7 — FAQ ============ -->
+  <section class="section faq-section" id="faq">
     <div class="container faq-container">
-      <p class="eyebrow">Clear Answers</p>
-      <h2 class="section-title">Frequently asked <em>questions.</em></h2>
+      <div class="section-header text-center">
+        <div class="section-tag reveal-up">
+          <span class="mono-num">7</span>
+          <span class="mono-sep">—</span>
+          <span>CLARITY</span>
+        </div>
+        <h2 class="section-title reveal-up">
+          Frequently <span class="title-serif">asked.</span>
+        </h2>
+      </div>
 
-      <div class="faq-list">
-        <div class="faq-item glass">
-          <h4>How long does a website build take?</h4>
-          <p>Most local business websites are designed, developed, and launched within 2 to 4 weeks, depending on how
-            quickly we receive your content and feedback.</p>
+      <div class="faq-accordion">
+        <div class="faq-item reveal-up">
+          <button class="faq-q" aria-expanded="false">
+            <span class="faq-q-text">What does a website build cost?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-a">
+            <div class="faq-a-inner">
+              Our curated website packages start from ₹11,999 for foundational builds, ₹17,999 for full growth setups
+              with local SEO dominance, and ₹25,999 for comprehensive digital presences. Custom quotes are available for
+              enterprise and e-commerce platforms.
+            </div>
+          </div>
         </div>
-        <div class="faq-item glass">
-          <h4>Do I own the website after it's built?</h4>
-          <p>Absolutely. Once the project is paid in full, you own 100% of the digital assets and domain. We just manage
-            the technical side to keep it running smoothly.</p>
+
+        <div class="faq-item reveal-up">
+          <button class="faq-q" aria-expanded="false">
+            <span class="faq-q-text">How long does a website take from start to launch?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-a">
+            <div class="faq-a-inner">
+              Most projects are fully designed, developed, tuned for performance, and deployed live within 2 to 4 weeks,
+              depending on content readiness and feedback speed.
+            </div>
+          </div>
         </div>
-        <div class="faq-item glass">
-          <h4>Why shouldn't I just use Wix or Squarespace?</h4>
-          <p>DIY builders are great for hobbies, but they load slowly and struggle with local SEO. We write clean,
-            custom code that ranks higher on Google and converts visitors faster.</p>
+
+        <div class="faq-item reveal-up">
+          <button class="faq-q" aria-expanded="false">
+            <span class="faq-q-text">Do you provide ongoing maintenance and hosting?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-a">
+            <div class="faq-a-inner">
+              Yes. We offer continuous technical maintenance, security updates, sub-second hosting management, and
+              ongoing content edits starting at ₹999/month so you never have to worry about broken code or downtime.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item reveal-up">
+          <button class="faq-q" aria-expanded="false">
+            <span class="faq-q-text">Can you handle Google Business Profile and local SEO?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-a">
+            <div class="faq-a-inner">
+              Absolutely. In fact, local visibility is our signature advantage. We optimize your Google Maps placement,
+              meta structures, local schema, and citations to ensure high-intent customers in your area find you first.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item reveal-up">
+          <button class="faq-q" aria-expanded="false">
+            <span class="faq-q-text">Do I own the website after launch?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-a">
+            <div class="faq-a-inner">
+              100% yes. You own all design assets, code, copy, and domains. We believe in earning your long-term trust
+              through exceptional work, never vendor lock-in.
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- ============ 11 — FOOTER ============ -->
   <footer class="footer">
-    <div class="container footer-inner">
-      <div class="footer-main">
+    <div class="container footer-container">
+      <div class="footer-wordmark-wrap">
+        <h2 class="footer-huge-wordmark">MERIDIAN DYNAMICS.</h2>
+      </div>
 
-        <div class="footer-col brand-col">
-          <a href="#top" class="footer-logo-link">
-            <img src="assets/logo.png" alt="Meridian Dynamics" class="footer-logo" height="32">
-            <span class="footer-brand-name">Meridian Dynamics</span>
-          </a>
-          <p class="footer-tagline">Digital infrastructure and social growth for modern local businesses.</p>
-          <div class="footer-socials">
-            <a href="https://www.instagram.com/meridiandynamics.online" aria-label="Instagram">
-              <svg viewBox="0 0 24 24">
-                <path
-                  d="M12 2c2.717 0 3.056.01 4.122.06 1.065.05 1.79.217 2.428.465.66.254 1.216.598 1.772 1.153a4.908 4.908 0 0 1 1.153 1.772c.247.637.415 1.363.465 2.428.047 1.066.06 1.405.06 4.122 0 2.717-.01 3.056-.06 4.122-.05 1.065-.218 1.79-.465 2.428a4.883 4.883 0 0 1-1.153 1.772 4.915 4.915 0 0 1-1.772 1.153c-.637.247-1.363.415-2.428.465-1.066.047-1.405.06-4.122.06-2.717 0-3.056-.01-4.122-.06-1.065-.05-1.79-.218-2.428-.465a4.89 4.89 0 0 1-1.772-1.153 4.904 4.904 0 0 1-1.153-1.772c-.248-.637-.415-1.363-.465-2.428C2.013 15.056 2 14.717 2 12c0-2.717.01-3.056.06-4.122.05-1.066.217-1.79.465-2.428a4.88 4.88 0 0 1 1.153-1.772A4.897 4.897 0 0 1 5.45 2.525c.638-.248 1.362-.415 2.428-.465C8.944 2.013 9.283 2 12 2zm0 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 8.2a3.2 3.2 0 1 1 0-6.4 3.2 3.2 0 0 1 0 6.4zm5.838-8.995a1.14 1.14 0 1 1-2.28 0 1.14 1.14 0 0 1 2.28 0z"
-                  fill="currentColor" />
-              </svg>
+      <div class="footer-grid">
+        <div class="footer-brand-bio">
+          <p class="footer-tagline">
+            Digital experiences for ambitious businesses. Built with architectural restraint and uncompromising
+            engineering.
+          </p>
+          <div class="footer-social-links">
+            <a href="https://www.instagram.com/meridiandynamics.online" target="_blank" rel="noopener noreferrer"
+              class="social-link" aria-label="Instagram">
+              Instagram
             </a>
-            <a href="#" aria-label="X (Twitter)">
-              <svg viewBox="0 0 24 24">
-                <path
-                  d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
-                  fill="currentColor" />
-              </svg>
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-link"
+              aria-label="LinkedIn">
+              LinkedIn
             </a>
-            <a href="#" aria-label="LinkedIn">
-              <svg viewBox="0 0 24 24">
-                <path
-                  d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
-                  fill="currentColor" />
-              </svg>
+            <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="social-link"
+              aria-label="GitHub">
+              GitHub
             </a>
           </div>
         </div>
 
-        <div class="footer-col">
-          <h4 class="footer-heading">Quick Links</h4>
-          <ul class="footer-links-list">
+        <div class="footer-nav-col">
+          <span class="footer-col-title">NAVIGATION</span>
+          <ul class="footer-list">
+            <li><a href="#work">Work</a></li>
             <li><a href="#services">Services</a></li>
-            <li><a href="#projects">Work</a></li>
+            <li><a href="#process">Process</a></li>
             <li><a href="#pricing">Pricing</a></li>
             <li><a href="team.html">Team</a></li>
             <li><a href="#faq">FAQ</a></li>
           </ul>
         </div>
 
-        <!-- Column 3: Contact Us -->
-        <div class="footer-col">
-          <h4 class="footer-heading">Contact Us</h4>
-          <ul class="footer-links-list contact-list">
-            <li>
-              <a href="tel:+918799312003">
-                <svg class="footer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path
-                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
-                  </path>
-                </svg>
-                +91 87993 12003
-              </a>
-            </li>
-            <li>
-              <a href="mailto:meridiandynamics.online@gmail.com">
-                <svg class="footer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                  <polyline points="22,6 12,13 2,6"></polyline>
-                </svg>
-                meridiandynamics.online@gmail.com
-              </a>
-            </li>
+        <div class="footer-contact-col">
+          <span class="footer-col-title">DIRECT INQUIRIES</span>
+          <ul class="footer-list">
+            <li><a href="mailto:meridiandynamics.online@gmail.com">meridiandynamics.online@gmail.com</a></li>
+            <li><a href="tel:+918799312003">+91 87993 12003</a></li>
+            <li class="footer-location">Lucknow, Uttar Pradesh, India</li>
           </ul>
         </div>
       </div>
 
-      <div class="footer-bottom">
-        <p class="footer-copy">© 2026 Meridian Dynamics. All rights reserved.</p>
-        <p class="footer-credit">Designed & Developed by <strong>Meridian Dynamics</strong></p>
+      <div class="footer-legal-bar">
+        <span class="footer-copyright">© 2026 Meridian Dynamics. All rights reserved.</span>
+        <span class="footer-crafted">Designed & Developed by Meridian Dynamics.</span>
       </div>
     </div>
   </footer>
 
+  <!-- Scripts -->
+  <!-- Lenis provides inertial, buttery-smooth scrolling while preserving native anchors/accessibility. -->
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.20/dist/lenis.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script src="script.js"></script>

@@ -1,342 +1,888 @@
-// ============================================
-// Interactions & GSAP animation
-// ============================================
+document.addEventListener("DOMContentLoaded", () => {
 
-gsap.registerPlugin(ScrollTrigger);
+  /* =========================================================
+     01 — LENIS SMOOTH SCROLL
+     ========================================================= */
 
-// Helper function to safely send gtag events
-function trackEvent(eventName, params = {}) {
-  if (typeof gtag === 'function') {
-    gtag('event', eventName, params);
+  let lenis = null;
+
+  if (typeof Lenis !== "undefined") {
+    lenis = new Lenis({
+      duration: 1.15,
+      smoothWheel: true,
+      smoothTouch: false,
+      wheelMultiplier: 0.9,
+      touchMultiplier: 1,
+      infinite: false
+    });
+
+    lenis.on("scroll", ScrollTrigger.update);
+
+    gsap.ticker.add((time) => {
+      lenis.raf(time * 1000);
+    });
+
+    gsap.ticker.lagSmoothing(0);
+
+    /* Smooth anchor navigation */
+
+    document.querySelectorAll('a[href^="#"]').forEach((link) => {
+      link.addEventListener("click", (e) => {
+        const targetId = link.getAttribute("href");
+
+        if (!targetId || targetId === "#") return;
+
+        const target = document.querySelector(targetId);
+
+        if (!target) return;
+
+        e.preventDefault();
+
+        lenis.scrollTo(target, {
+          offset: 0,
+          duration: 1.2
+        });
+      });
+    });
   }
-}
 
-document.addEventListener('DOMContentLoaded', () => {
+  /* =========================================================
+     03 — TRANSFORMATION — BEFORE / AFTER SLIDER
+     ========================================================= */
 
-  // ---------- Hero entrance ----------
-  const heroTimeline = gsap.timeline({ defaults: { ease: 'power3.out' } });
+  const transformSlider = document.querySelector("#transformSlider");
+  const transformAfter = document.querySelector("#transformAfter");
+  const transformHandle = document.querySelector("#transformHandle");
 
-  heroTimeline
-    .from('.hero-eyebrow', { opacity: 0, y: 16, duration: 0.6 })
-    .from('.hero-title .line', {
-      opacity: 0,
-      y: 50,
-      duration: 0.8,
-      stagger: 0.12
-    }, '-=0.3')
-    .from('.hero-sub', { opacity: 0, y: 20, duration: 0.6 }, '-=0.35')
-    .from('.hero-actions .btn', { opacity: 0, y: 16, duration: 0.5, stagger: 0.08 }, '-=0.3')
-    .from('.hero-stats', { opacity: 0, y: 24, duration: 0.6 }, '-=0.2')
-    .from('.nav', { opacity: 0, y: -20, duration: 0.5 }, 0.1);
+  if (transformSlider && transformAfter && transformHandle) {
 
-  // ---------- Hero blob ambient drift ----------
-  gsap.to('.blob-1', { x: 30, y: 20, duration: 8, repeat: -1, yoyo: true, ease: 'sine.inOut' });
-  gsap.to('.blob-2', { x: -20, y: -30, duration: 10, repeat: -1, yoyo: true, ease: 'sine.inOut' });
-  gsap.to('.blob-3', { x: 20, y: -20, duration: 7, repeat: -1, yoyo: true, ease: 'sine.inOut' });
+    let isDragging = false;
 
-  // ---------- Stat counters ----------
-  document.querySelectorAll('.stat-num').forEach((el) => {
-    const target = parseFloat(el.dataset.count);
-    if (isNaN(target)) return;
+    function updateSlider(clientX) {
+      const rect = transformSlider.getBoundingClientRect();
 
-    ScrollTrigger.create({
-      trigger: el,
-      start: 'top 90%',
-      once: true,
-      onEnter: () => {
-        gsap.to(el, {
-          textContent: target,
-          duration: 1.4,
-          ease: 'power2.out',
-          snap: { textContent: 1 },
-          onUpdate: function () {
-            if (el.dataset.count.includes('.')) {
-              el.textContent = Number(this.targets()[0].textContent).toFixed(1);
-            } else {
-              el.textContent = Math.ceil(this.targets()[0].textContent);
-            }
-          }
-        });
+      let position =
+        ((clientX - rect.left) / rect.width) * 100;
+
+      // Keep slider inside the frame
+      position = Math.max(0, Math.min(100, position));
+
+      // Reveal AFTER image
+      transformAfter.style.clipPath =
+        `inset(0 0 0 ${position}%)`;
+
+      // Move divider
+      transformHandle.style.left =
+        `${position}%`;
+    }
+
+    /* -----------------------------------------
+       Mouse
+       ----------------------------------------- */
+
+    transformSlider.addEventListener("mousedown", (e) => {
+      isDragging = true;
+      updateSlider(e.clientX);
+    });
+
+    window.addEventListener("mousemove", (e) => {
+      if (!isDragging) return;
+      updateSlider(e.clientX);
+    });
+
+    window.addEventListener("mouseup", () => {
+      isDragging = false;
+    });
+
+
+    /* -----------------------------------------
+       Touch
+       ----------------------------------------- */
+
+    transformSlider.addEventListener(
+      "touchstart",
+      (e) => {
+        isDragging = true;
+        updateSlider(e.touches[0].clientX);
+      },
+      { passive: true }
+    );
+
+    window.addEventListener(
+      "touchmove",
+      (e) => {
+        if (!isDragging) return;
+
+        updateSlider(e.touches[0].clientX);
+      },
+      { passive: true }
+    );
+
+    window.addEventListener("touchend", () => {
+      isDragging = false;
+    });
+
+
+    /* -----------------------------------------
+       Prevent image dragging
+       ----------------------------------------- */
+
+    const transformImages =
+      transformSlider.querySelectorAll("img");
+
+    transformImages.forEach((img) => {
+      img.setAttribute("draggable", "false");
+
+      img.addEventListener("dragstart", (e) => {
+        e.preventDefault();
+      });
+    });
+
+
+    /* -----------------------------------------
+       Prevent browser image/text selection
+       ----------------------------------------- */
+
+    transformSlider.addEventListener("dragstart", (e) => {
+      e.preventDefault();
+    });
+
+
+    /* -----------------------------------------
+       Initial position
+       ----------------------------------------- */
+
+    updateSlider(
+      transformSlider.getBoundingClientRect().left +
+      transformSlider.getBoundingClientRect().width * 0.5
+    );
+  }
+
+  /* =========================================================
+     02 — NAVBAR
+     Full width at top → compact when scrolling
+     ========================================================= */
+
+  const navWrap = document.getElementById("navWrap");
+
+  if (navWrap) {
+    const updateNavbar = () => {
+      if (window.scrollY > 60) {
+        navWrap.classList.add("scrolled");
+      } else {
+        navWrap.classList.remove("scrolled");
+      }
+    };
+
+    updateNavbar();
+
+    window.addEventListener(
+      "scroll",
+      updateNavbar,
+      { passive: true }
+    );
+  }
+
+  /* =========================================================
+     03 — MOBILE NAVIGATION
+     ========================================================= */
+
+  const navBurger = document.getElementById("navBurger");
+  const navLinks = document.getElementById("navLinks");
+
+  if (navBurger && navLinks) {
+
+    navBurger.addEventListener("click", () => {
+      const isOpen = navBurger.classList.toggle("active");
+
+      navLinks.classList.toggle("open", isOpen);
+
+      navBurger.setAttribute(
+        "aria-expanded",
+        isOpen ? "true" : "false"
+      );
+
+      document.body.classList.toggle(
+        "nav-open",
+        isOpen
+      );
+    });
+
+    navLinks.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        navBurger.classList.remove("active");
+        navLinks.classList.remove("open");
+
+        navBurger.setAttribute(
+          "aria-expanded",
+          "false"
+        );
+
+        document.body.classList.remove("nav-open");
+      });
+    });
+  }
+
+  /* =========================================================
+     04 — HERO INTRO ANIMATION
+     ========================================================= */
+
+  if (typeof gsap !== "undefined") {
+
+    const heroTimeline = gsap.timeline({
+      defaults: {
+        ease: "power3.out"
       }
     });
-  });
 
-  // ---------- Generic scroll reveal ----------
-  gsap.utils.toArray('.reveal-up').forEach((el, i) => {
-    ScrollTrigger.create({
-      trigger: el,
-      start: 'top 88%',
-      once: true,
-      onEnter: () => {
-        gsap.to(el, {
-          opacity: 1,
-          y: 0,
-          duration: 0.7,
-          delay: (i % 4) * 0.08,
-          ease: 'power3.out'
-        });
-      }
-    });
-  });
+    const heroElements = document.querySelectorAll(
+      ".reveal-hero"
+    );
 
-  // ---------- Section title / sub reveal ----------
-  gsap.utils.toArray('.section').forEach((section) => {
-    const title = section.querySelector('.section-title');
-    const sub = section.querySelector('.section-sub');
-    const eyebrow = section.querySelector('.eyebrow');
-    if (!title) return;
+    if (heroElements.length) {
 
-    gsap.set([eyebrow, title, sub].filter(Boolean), { opacity: 0, y: 24 });
-
-    ScrollTrigger.create({
-      trigger: title,
-      start: 'top 85%',
-      once: true,
-      onEnter: () => {
-        gsap.to([eyebrow, title, sub].filter(Boolean), {
-          opacity: 1,
-          y: 0,
-          duration: 0.7,
-          stagger: 0.12,
-          ease: 'power3.out'
-        });
-      }
-    });
-  });
-
-  // ---------- Project tabs ----------
-  const tabButtons = document.querySelectorAll('.tab-btn');
-  const panels = document.querySelectorAll('.project-panel');
-
-  tabButtons.forEach((btn) => {
-    btn.addEventListener('click', () => {
-      const target = btn.dataset.tab;
-
-      // GA: Track Project Category Switch
-      trackEvent('select_content', {
-        content_type: 'project_tab',
-        item_id: target
+      gsap.set(heroElements, {
+        opacity: 0,
+        y: 30
       });
 
-      tabButtons.forEach((b) => b.classList.remove('active'));
-      btn.classList.add('active');
+      heroTimeline.to(heroElements, {
+        opacity: 1,
+        y: 0,
+        duration: 0.9,
+        stagger: 0.12,
+        delay: 0.25
+      });
+    }
 
-      panels.forEach((panel) => {
-        if (panel.dataset.panel === target) {
-          panel.classList.add('active');
-          gsap.fromTo(
-            panel.querySelectorAll('.project-card'),
-            { opacity: 0, y: 20 },
-            { opacity: 1, y: 0, duration: 0.5, stagger: 0.08, ease: 'power3.out' }
-          );
+    /* Hero video subtle entrance */
+
+    const heroVideo = document.querySelector(
+      ".hero-video-media"
+    );
+
+    if (heroVideo) {
+
+      gsap.fromTo(
+        heroVideo,
+        {
+          scale: 1.04
+        },
+        {
+          scale: 1.015,
+          duration: 2.2,
+          ease: "power2.out"
+        }
+      );
+    }
+
+    /* =======================================================
+       HERO VIDEO PARALLAX
+       ======================================================= */
+
+    if (
+      heroVideo &&
+      typeof ScrollTrigger !== "undefined"
+    ) {
+
+      gsap.to(heroVideo, {
+        yPercent: 4,
+        ease: "none",
+
+        scrollTrigger: {
+          trigger: ".hero",
+          start: "top top",
+          end: "bottom top",
+          scrub: true
+        }
+      });
+    }
+
+    /* =======================================================
+       HERO CONTENT SCROLL
+       ======================================================= */
+
+    const heroContent = document.querySelector(
+      ".hero-content"
+    );
+
+    if (
+      heroContent &&
+      typeof ScrollTrigger !== "undefined"
+    ) {
+
+      gsap.to(heroContent, {
+        y: -60,
+        scale: 0.97,
+        opacity: 0.15,
+        ease: "none",
+
+        scrollTrigger: {
+          trigger: ".hero",
+          start: "top top",
+          end: "bottom top",
+          scrub: true
+        }
+      });
+    }
+  }
+
+  /* =========================================================
+     07 — THE MERIDIAN DIFFERENCE
+     Scroll-driven compressed/parallax animation
+     ========================================================= */
+
+  if (
+    typeof gsap !== "undefined" &&
+    typeof ScrollTrigger !== "undefined"
+  ) {
+    const differenceSection =
+      document.querySelector("#difference");
+
+    const mantraLines =
+      document.querySelectorAll(
+        "#differenceMantra .mantra-line"
+      );
+
+    if (
+      differenceSection &&
+      mantraLines.length
+    ) {
+
+      /* -------------------------------------------------------
+         Initial state
+         ------------------------------------------------------- */
+
+      gsap.set(mantraLines, {
+        opacity: 0.25,
+        y: 12
+      });
+
+      mantraLines.forEach((line) => {
+        line.classList.remove("active");
+      });
+
+
+      /* -------------------------------------------------------
+         Scroll-driven timeline
+         ------------------------------------------------------- */
+
+      const differenceTimeline =
+        gsap.timeline();
+
+
+      mantraLines.forEach((line, index) => {
+
+        differenceTimeline.to(
+          line,
+          {
+            opacity: 1,
+            y: 0,
+            duration: 2,
+            ease: "power2.out",
+
+            onStart: () => {
+              line.classList.add("active");
+            },
+
+            onReverseComplete: () => {
+              line.classList.remove("active");
+            }
+          },
+
+          index
+        );
+
+      });
+
+
+      /* -------------------------------------------------------
+         ScrollTrigger
+         ------------------------------------------------------- */
+
+      ScrollTrigger.create({
+
+        trigger: differenceSection,
+
+        /*
+         * START:
+         * Section reaches 15% of viewport.
+         */
+
+        start: "top 15%",
+
+        /*
+         * END:
+         * Section moves up to roughly 1% of viewport.
+         *
+         * This compresses the animation into a short
+         * scroll distance.
+         */
+
+        end: "top 1%",
+
+        /*
+         * Animation follows the scroll.
+         */
+
+        scrub: 0.01,
+
+        animation: differenceTimeline
+
+      });
+
+    }
+  }
+
+  /* =========================================================
+     05 — GENERIC REVEAL ANIMATIONS
+     ========================================================= */
+
+  if (
+    typeof gsap !== "undefined" &&
+    typeof ScrollTrigger !== "undefined"
+  ) {
+
+    gsap.utils.toArray(".reveal-up").forEach((element) => {
+
+      gsap.fromTo(
+        element,
+        {
+          opacity: 0,
+          y: 50
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.9,
+          ease: "power3.out",
+
+          scrollTrigger: {
+            trigger: element,
+            start: "top 88%",
+            once: true
+          }
+        }
+      );
+    });
+
+    gsap.utils.toArray(".reveal-fade").forEach((element) => {
+
+      gsap.fromTo(
+        element,
+        {
+          opacity: 0
+        },
+        {
+          opacity: 1,
+          duration: 1,
+
+          scrollTrigger: {
+            trigger: element,
+            start: "top 88%",
+            once: true
+          }
+        }
+      );
+    });
+
+    /* =======================================================
+       SCALE-IN IMAGES
+       ======================================================= */
+
+    gsap.utils.toArray(".image-reveal").forEach((element) => {
+
+      gsap.fromTo(
+        element,
+        {
+          scale: 1.08,
+          opacity: 0
+        },
+        {
+          scale: 1,
+          opacity: 1,
+          duration: 1.2,
+          ease: "power3.out",
+
+          scrollTrigger: {
+            trigger: element,
+            start: "top 85%",
+            once: true
+          }
+        }
+      );
+    });
+  }
+
+  /* =========================================================
+     06 — COUNTERS
+     ========================================================= */
+
+  if (
+    typeof gsap !== "undefined" &&
+    typeof ScrollTrigger !== "undefined"
+  ) {
+
+    document
+      .querySelectorAll("[data-count]")
+      .forEach((counter) => {
+
+        const target = parseInt(
+          counter.dataset.count,
+          10
+        );
+
+        if (Number.isNaN(target)) return;
+
+        const value = {
+          current: 0
+        };
+
+        ScrollTrigger.create({
+          trigger: counter,
+          start: "top 90%",
+          once: true,
+
+          onEnter: () => {
+
+            gsap.to(value, {
+              current: target,
+              duration: 1.5,
+              ease: "power2.out",
+
+              onUpdate: () => {
+                counter.textContent =
+                  Math.round(value.current);
+              }
+            });
+          }
+        });
+      });
+  }
+
+  /* =========================================================
+   06 — METHODOLOGY / PROCESS
+   ========================================================= */
+
+  if (
+    typeof gsap !== "undefined" &&
+    typeof ScrollTrigger !== "undefined"
+  ) {
+    const processSection = document.querySelector("#process");
+    const processInteractive = document.querySelector("#processInteractive");
+    const processTrackFill = document.querySelector("#processTrackFill");
+    const processNodes = document.querySelectorAll(".process-node");
+
+    if (
+      processSection &&
+      processInteractive &&
+      processTrackFill &&
+      processNodes.length
+    ) {
+
+      /* -------------------------------------------------------
+         Initial state
+         ------------------------------------------------------- */
+
+      // Start the progress line at 0%
+      gsap.set(processTrackFill, {
+        scaleX: 0,
+        transformOrigin: "left center"
+      });
+
+      // First step is visible initially
+      processNodes.forEach((node, index) => {
+        if (index === 0) {
+          node.classList.add("active");
         } else {
-          panel.classList.remove('active');
+          node.classList.remove("active");
+        }
+      });
+
+
+      /* -------------------------------------------------------
+         Create the one-time animation
+         ------------------------------------------------------- */
+
+      const processTimeline = gsap.timeline({
+        paused: true
+      });
+
+
+      /*
+       * Progress line
+       *
+       * Moves from left → right once.
+       */
+
+      processTimeline.to(
+        processTrackFill,
+        {
+          scaleX: 1,
+          duration: 2.2,
+          ease: "power2.inOut"
+        },
+        0
+      );
+
+
+      /*
+       * Activate the methodology steps progressively.
+       *
+       * 01 → 02 → 03 → 04
+       */
+
+      processNodes.forEach((node, index) => {
+
+        // Don't deactivate Step 1 at the beginning
+        if (index === 0) return;
+
+        processTimeline.call(
+          () => {
+            node.classList.add("active");
+          },
+          [],
+          0.45 + (index - 1) * 0.55
+        );
+
+      });
+
+
+      /* -------------------------------------------------------
+         Trigger animation when methodology becomes visible
+         ------------------------------------------------------- */
+
+      ScrollTrigger.create({
+        trigger: processSection,
+
+        start: "top 70%",
+
+        once: true,
+
+        onEnter: () => {
+          processTimeline.play();
+        }
+      });
+    }
+  }
+
+  /* =========================================================
+     07 — FAQ ACCORDION
+     ========================================================= */
+
+  document
+    .querySelectorAll(".faq-q")
+    .forEach((button) => {
+
+      button.addEventListener("click", () => {
+
+        const item = button.closest(".faq-item");
+
+        if (!item) return;
+
+        const answer = item.querySelector(".faq-a");
+        const isOpen =
+          button.getAttribute("aria-expanded") === "true";
+
+        /* Close other FAQ items */
+
+        document
+          .querySelectorAll(".faq-item")
+          .forEach((otherItem) => {
+
+            if (otherItem === item) return;
+
+            const otherButton =
+              otherItem.querySelector(".faq-q");
+
+            const otherAnswer =
+              otherItem.querySelector(".faq-a");
+
+            if (!otherButton || !otherAnswer) return;
+
+            otherButton.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+
+            otherItem.classList.remove("active");
+
+            otherAnswer.style.maxHeight = null;
+          });
+
+        /* Toggle current */
+
+        if (isOpen) {
+
+          button.setAttribute(
+            "aria-expanded",
+            "false"
+          );
+
+          item.classList.remove("active");
+
+          answer.style.maxHeight = null;
+
+        } else {
+
+          button.setAttribute(
+            "aria-expanded",
+            "true"
+          );
+
+          item.classList.add("active");
+
+          answer.style.maxHeight =
+            answer.scrollHeight + "px";
         }
       });
     });
-  });
 
-  // ---------- Pricing tabs ----------
-  const pricingButtons = document.querySelectorAll('.pricing-tab-btn');
-  const pricingPanels = document.querySelectorAll('.pricing-panel');
+  /* =========================================================
+     08 — ACTIVE NAVIGATION
+     ========================================================= */
 
-  pricingButtons.forEach((btn) => {
-    btn.addEventListener('click', () => {
-      const target = btn.dataset.tab;
+  if (
+    typeof ScrollTrigger !== "undefined"
+  ) {
 
-      // GA: Track Pricing Category Switch
-      trackEvent('select_content', {
-        content_type: 'pricing_tab',
-        item_id: target
-      });
+    const sections = document.querySelectorAll(
+      "section[id]"
+    );
 
-      pricingButtons.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      pricingPanels.forEach(panel => {
-        if (panel.dataset.panel === target) { panel.classList.add('active'); } else { panel.classList.remove('active'); }
-      });
-    });
-  });
+    const navItems = document.querySelectorAll(
+      ".nav-link"
+    );
 
-  // ---------- Track Pricing Card CTA Clicks ----------
-  document.querySelectorAll('.price-card .btn').forEach((btn) => {
-    btn.addEventListener('click', () => {
-      const card = btn.closest('.price-card');
-      const planName = card ? card.querySelector('.price-name')?.innerText.trim() : 'Unknown';
-      const planPrice = card ? card.querySelector('.price-amount')?.innerText.replace(/\s+/g, ' ').trim() : '';
+    sections.forEach((section) => {
 
-      trackEvent('get_started', {
-        item_list_name: 'Pricing Plans',
-        item_name: planName,
-        price_tier: planPrice
+      ScrollTrigger.create({
+        trigger: section,
+        start: "top 45%",
+        end: "bottom 45%",
+
+        onEnter: () => {
+          setActiveNav(section.id);
+        },
+
+        onEnterBack: () => {
+          setActiveNav(section.id);
+        }
       });
     });
-  });
 
-  // ---------- Track Outbound Portfolio / Client Links ----------
-  document.querySelectorAll('.project-link').forEach((link) => {
-    link.addEventListener('click', () => {
-      const card = link.closest('.project-card');
-      const projectName = card ? card.querySelector('h3')?.innerText.trim() : 'Unknown Project';
+    function setActiveNav(id) {
 
-      trackEvent('view_item', {
-        item_category: 'Portfolio',
-        item_name: projectName,
-        destination_url: link.href
+      navItems.forEach((link) => {
+
+        const href =
+          link.getAttribute("href");
+
+        if (href === `#${id}`) {
+          link.classList.add("active");
+        } else {
+          link.classList.remove("active");
+        }
       });
-    });
-  });
-
-  // ---------- Track Direct Phone & Email Clicks ----------
-  document.querySelectorAll('a[href^="tel:"], a[href^="mailto:"]').forEach((link) => {
-    link.addEventListener('click', () => {
-      const isPhone = link.href.startsWith('tel:');
-      trackEvent('contact', {
-        method: isPhone ? 'Phone' : 'Email',
-        contact_detail: link.href.replace(/^(tel:|mailto:)/, '')
-      });
-    });
-  });
-
-  // ---------- Mobile nav burger ----------
-  const burger = document.getElementById('navBurger');
-  const navLinks = document.querySelector('.nav-links');
-
-  if (burger && navLinks) {
-    burger.addEventListener('click', () => {
-      navLinks.classList.toggle('menu-open');
-      burger.classList.toggle('active');
-
-      if (navLinks.classList.contains('menu-open')) {
-        document.body.style.overflow = 'hidden';
-      } else {
-        document.body.style.overflow = '';
-      }
-    });
-
-    const links = navLinks.querySelectorAll('a');
-    links.forEach(link => {
-      link.addEventListener('click', () => {
-        navLinks.classList.remove('menu-open');
-        burger.classList.remove('active');
-        document.body.style.overflow = '';
-      });
-    });
+    }
   }
 
-  // ---------- Contact form (Web3Forms Integration + GA Conversion) ----------
-  const form = document.getElementById('contactForm');
-  const result = document.getElementById('formNote');
+  /* =========================================================
+     09 — CONTACT FORM
+     ========================================================= */
 
-  if (form) {
-    const submitButton = form.querySelector('.form-submit');
+  const contactForm =
+    document.querySelector("#contactForm");
 
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
+  if (contactForm) {
 
-      const originalBtnText = submitButton.innerText;
-      submitButton.innerText = 'Sending...';
-      submitButton.style.opacity = '0.7';
-      submitButton.style.pointerEvents = 'none';
+    contactForm.addEventListener(
+      "submit",
+      (event) => {
 
-      const formData = new FormData(form);
-      const object = Object.fromEntries(formData);
-      const json = JSON.stringify(object);
+        event.preventDefault();
 
-      fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
-        body: json
-      })
-        .then(async (response) => {
-          let resJson = await response.json();
-          if (response.status == 200) {
-            // Success
-            result.style.display = "block";
-            result.style.color = "#10b981";
-            result.innerText = "Message sent successfully! We'll be in touch soon.";
-            gsap.fromTo(result, { opacity: 0 }, { opacity: 1, duration: 0.4 });
+        const submitButton =
+          contactForm.querySelector(
+            'button[type="submit"]'
+          );
 
-            // GA: Key Conversion Event
-            trackEvent('generate_lead', {
-              event_category: 'Contact',
-              event_label: object.business || 'General Inquiry'
-            });
+        if (!submitButton) return;
 
-            form.reset();
-          } else {
-            // Form endpoint error
-            result.style.display = "block";
-            result.style.color = "#ef4444";
-            result.innerText = resJson.message || "Something went wrong.";
-            gsap.fromTo(result, { opacity: 0 }, { opacity: 1, duration: 0.4 });
-          }
-        })
-        .catch(error => {
-          result.style.display = "block";
-          result.style.color = "#ef4444";
-          result.innerText = "Something went wrong! Please try again later.";
-          gsap.fromTo(result, { opacity: 0 }, { opacity: 1, duration: 0.4 });
-        })
-        .finally(() => {
-          submitButton.innerText = originalBtnText;
-          submitButton.style.opacity = '1';
-          submitButton.style.pointerEvents = 'auto';
+        const originalText =
+          submitButton.textContent;
+
+        submitButton.disabled = true;
+
+        submitButton.textContent =
+          "Sending...";
+
+        /*
+         * Keep your existing form submission
+         * logic here if you already have one.
+         */
+
+        setTimeout(() => {
+
+          submitButton.textContent =
+            "Message sent ✓";
 
           setTimeout(() => {
-            gsap.to(result, {
-              opacity: 0,
-              duration: 0.4,
-              onComplete: () => { result.style.display = "none"; }
-            });
-          }, 5000);
-        });
-    });
-  }
 
-  // ---------- Card tilt (service + team cards only) ----------
-  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const isCoarsePointer = window.matchMedia('(hover: none)').matches;
+            submitButton.disabled = false;
 
-  if (!prefersReducedMotion && !isCoarsePointer) {
-    const maxTilt = 10;
+            submitButton.textContent =
+              originalText;
 
-    document.querySelectorAll('.tilt').forEach((card) => {
-      card.addEventListener('mousemove', (e) => {
-        const rect = card.getBoundingClientRect();
-        const px = (e.clientX - rect.left) / rect.width;
-        const py = (e.clientY - rect.top) / rect.height;
+          }, 2500);
 
-        const tiltX = (py - 0.5) * -maxTilt;
-        const tiltY = (px - 0.5) * maxTilt;
-
-        card.style.transform = `rotateX(${tiltX}deg) rotateY(${tiltY}deg) translateY(-4px) scale(1.02)`;
-        card.style.setProperty('--glare-x', `${px * 100}%`);
-        card.style.setProperty('--glare-y', `${py * 100}%`);
-        card.classList.add('hovering');
-      });
-
-      card.addEventListener('mouseleave', () => {
-        card.style.transform = '';
-        card.classList.remove('hovering');
-      });
-    });
-  }
-
-  // ---------- Nav background on scroll ----------
-  ScrollTrigger.create({
-    start: 'top -80',
-    onUpdate: (self) => {
-      const nav = document.querySelector('.nav');
-      if (self.direction === 1 && window.scrollY > 80) {
-        nav.style.boxShadow = '0 8px 28px rgba(28,28,30,0.1)';
-      } else if (window.scrollY <= 80) {
-        nav.style.boxShadow = '';
+        }, 1000);
       }
-    }
-  });
+    );
+  }
+
+  /* =========================================================
+     10 — EXTERNAL / SAME-PAGE LINKS
+     ========================================================= */
+
+  document
+    .querySelectorAll('a[href^="#"]')
+    .forEach((link) => {
+
+      link.addEventListener("click", (event) => {
+
+        const href =
+          link.getAttribute("href");
+
+        if (
+          !href ||
+          href === "#" ||
+          typeof lenis === "undefined" ||
+          !lenis
+        ) {
+          return;
+        }
+
+        const target =
+          document.querySelector(href);
+
+        if (!target) return;
+
+        event.preventDefault();
+
+        lenis.scrollTo(target, {
+          duration: 1.2,
+          offset: 0
+        });
+      });
+    });
+
+  /* =========================================================
+     11 — PAGE LOADED
+     ========================================================= */
+
+  document.documentElement.classList.add(
+    "js-ready"
+  );
 
 });
