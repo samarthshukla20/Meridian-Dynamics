@@ -2240,6 +2240,7 @@ img {
 /* =========================================================
    09 — CONTACT / FINAL CTA
    ========================================================= */
+
 .contact-section {
   background: var(--bg-primary);
   padding: 160px 0 140px;
@@ -2288,7 +2289,9 @@ img {
   background: var(--bg-secondary);
   border-radius: var(--radius-md);
   border: 1px solid var(--border);
-  transition: border-color 0.3s ease, transform 0.3s var(--ease-cinematic);
+  transition:
+    border-color 0.3s ease,
+    transform 0.3s var(--ease-cinematic);
 }
 
 .contact-pill:hover {
@@ -2309,7 +2312,11 @@ img {
   color: var(--text-primary);
 }
 
-/* Contact Form Card */
+
+/* =========================================================
+   CONTACT FORM CARD
+   ========================================================= */
+
 .contact-form-card {
   padding: 40px;
   background: var(--bg-secondary);
@@ -2322,8 +2329,10 @@ img {
   display: flex;
   align-items: center;
   justify-content: space-between;
+
   margin-bottom: 32px;
   padding-bottom: 16px;
+
   border-bottom: 1px solid var(--border);
 }
 
@@ -2346,45 +2355,381 @@ img {
 
 .form-group label {
   display: block;
+
   font-family: var(--font-mono);
   font-size: 11px;
   letter-spacing: 0.1em;
+
   color: var(--text-secondary);
+
   margin-bottom: 8px;
+
   text-transform: uppercase;
 }
 
 .form-group input,
 .form-group textarea {
   width: 100%;
+
   padding: 14px 18px;
+
   background: var(--bg-surface);
+
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
+
   color: var(--text-primary);
+
   font-family: var(--font-body);
   font-size: 14px;
-  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+
   outline: none;
 }
 
 .form-group input:focus,
 .form-group textarea:focus {
   border-color: var(--accent);
-  box-shadow: 0 0 0 3px var(--accent-glow);
+
+  box-shadow:
+    0 0 0 3px var(--accent-glow);
 }
+
+
+/* =========================================================
+   PREMIUM ANIMATED SUBMIT BUTTON
+   ========================================================= */
 
 .form-submit-btn {
+  position: relative;
+
   width: 100%;
+  height: 54px;
+
   margin-top: 10px;
   padding: 16px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  overflow: hidden;
+
+  transition:
+    width 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+    height 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+    border-radius 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+    background 0.3s ease,
+    transform 0.2s ease;
+
+  transform-origin: center;
 }
 
+.form-submit-btn:hover:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+.form-submit-btn:disabled {
+  cursor: default;
+}
+
+
+/* =========================================================
+   LOADING STATE
+   ========================================================= */
+
+.form-submit-btn.is-loading {
+  width: 54px;
+  min-width: 54px;
+  height: 54px;
+
+  padding: 0;
+
+  margin-left: auto;
+  margin-right: auto;
+
+  border-radius: 50%;
+
+  color: transparent;
+
+  pointer-events: none;
+}
+
+.form-submit-btn.is-loading>* {
+  opacity: 0;
+}
+
+
+/* Loading spinner */
+
+.form-submit-btn.is-loading::after {
+  content: "";
+
+  position: absolute;
+
+  width: 20px;
+  height: 20px;
+
+  left: 50%;
+  top: 50%;
+
+  transform: translate(-50%, -50%);
+
+  border: 2px solid rgba(255, 255, 255, 0.22);
+
+  border-top-color: var(--accent);
+
+  border-radius: 50%;
+
+  animation: meridian-spinner 0.75s linear infinite;
+}
+
+@keyframes meridian-spinner {
+
+  to {
+    transform:
+      translate(-50%, -50%) rotate(360deg);
+  }
+
+}
+
+
+/* =========================================================
+   SUCCESS STATE
+   ========================================================= */
+
+.form-submit-btn.is-success {
+  width: 54px;
+  min-width: 54px;
+  height: 54px;
+
+  padding: 0;
+
+  margin-left: auto;
+  margin-right: auto;
+
+  border-radius: 50%;
+
+  background: var(--accent);
+
+  color: transparent;
+
+  pointer-events: none;
+}
+
+.form-submit-btn.is-success>* {
+  opacity: 0;
+}
+
+
+/* Success checkmark */
+
+.form-submit-btn.is-success::after {
+  content: "";
+
+  position: absolute;
+
+  width: 20px;
+  height: 10px;
+
+  left: 50%;
+  top: 48%;
+
+  border-left: 2px solid #0b0b0b;
+  border-bottom: 2px solid #0b0b0b;
+
+  transform:
+    translate(-50%, -50%) rotate(-45deg) scale(0);
+
+  animation:
+    meridian-success 0.35s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+@keyframes meridian-success {
+
+  to {
+    transform:
+      translate(-50%, -50%) rotate(-45deg) scale(1);
+  }
+
+}
+
+
+/* =========================================================
+   ERROR STATE
+   ========================================================= */
+
+.form-submit-btn.is-error {
+  width: 54px;
+  min-width: 54px;
+  height: 54px;
+
+  padding: 0;
+
+  margin-left: auto;
+  margin-right: auto;
+
+  border-radius: 50%;
+
+  background: #9f3d3d;
+
+  color: transparent;
+
+  pointer-events: none;
+
+  animation:
+    meridian-error-shake 0.45s ease;
+}
+
+.form-submit-btn.is-error>* {
+  opacity: 0;
+}
+
+
+/* Error icon */
+
+.form-submit-btn.is-error::after {
+  content: "!";
+
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  transform:
+    translate(-50%, -50%) scale(0);
+
+  color: #ffffff;
+
+  font-family: var(--font-mono);
+  font-size: 18px;
+  font-weight: 500;
+
+  animation:
+    meridian-error-icon 0.3s cubic-bezier(0.2, 0.8, 0.2, 1) 0.15s forwards;
+}
+
+@keyframes meridian-error-icon {
+
+  to {
+    transform:
+      translate(-50%, -50%) scale(1);
+  }
+
+}
+
+@keyframes meridian-error-shake {
+
+  0% {
+    transform: translateX(0);
+  }
+
+  20% {
+    transform: translateX(-4px);
+  }
+
+  40% {
+    transform: translateX(4px);
+  }
+
+  60% {
+    transform: translateX(-3px);
+  }
+
+  80% {
+    transform: translateX(2px);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+
+}
+
+
+/* =========================================================
+   FORM STATUS MESSAGE
+   ========================================================= */
+
 .form-note {
-  font-size: 13px;
+  min-height: 20px;
+
   margin-top: 14px;
+
+  font-family: var(--font-mono);
+  font-size: 11px;
+
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+
   text-align: center;
-  display: none;
+
+  opacity: 0;
+
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+}
+
+.form-note.success,
+.form-note.error {
+  opacity: 1;
+}
+
+.form-note.success {
+  color: #22c55e;
+}
+
+.form-note.error {
+  color: #c45a5a;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+  .contact-section {
+    padding: 110px 0 90px;
+  }
+
+  .contact-container {
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+
+  .contact-form-card {
+    padding: 28px 22px;
+  }
+
+}
+
+@media (max-width: 480px) {
+
+  .contact-form-card {
+    padding: 24px 18px;
+
+    border-radius: var(--radius-lg);
+  }
+
+  .form-submit-btn {
+    height: 52px;
+  }
+
+  .form-submit-btn.is-loading,
+  .form-submit-btn.is-success,
+  .form-submit-btn.is-error {
+    width: 52px;
+    min-width: 52px;
+    height: 52px;
+  }
+
 }
 
 /* =========================================================
@@ -2718,12 +3063,10 @@ img {
     left: 28px;
     right: 28px;
     height: 1px;
-    background: linear-gradient(
-      90deg,
-      rgba(255,255,255,0.14),
-      rgba(201,111,61,0.45),
-      rgba(255,255,255,0.06)
-    );
+    background: linear-gradient(90deg,
+        rgba(255, 255, 255, 0.14),
+        rgba(201, 111, 61, 0.45),
+        rgba(255, 255, 255, 0.06));
     transform-origin: left;
   }
 
@@ -2766,12 +3109,29 @@ img {
     transform: translateY(0);
   }
 
-  .nav-links.open li:nth-child(1) { transition-delay: 0.10s; }
-  .nav-links.open li:nth-child(2) { transition-delay: 0.15s; }
-  .nav-links.open li:nth-child(3) { transition-delay: 0.20s; }
-  .nav-links.open li:nth-child(4) { transition-delay: 0.25s; }
-  .nav-links.open li:nth-child(5) { transition-delay: 0.30s; }
-  .nav-links.open li:nth-child(6) { transition-delay: 0.35s; }
+  .nav-links.open li:nth-child(1) {
+    transition-delay: 0.10s;
+  }
+
+  .nav-links.open li:nth-child(2) {
+    transition-delay: 0.15s;
+  }
+
+  .nav-links.open li:nth-child(3) {
+    transition-delay: 0.20s;
+  }
+
+  .nav-links.open li:nth-child(4) {
+    transition-delay: 0.25s;
+  }
+
+  .nav-links.open li:nth-child(5) {
+    transition-delay: 0.30s;
+  }
+
+  .nav-links.open li:nth-child(6) {
+    transition-delay: 0.35s;
+  }
 
   .nav-links li:not(:last-child)::before {
     counter-increment: mobile-menu;
@@ -3382,11 +3742,9 @@ img {
   justify-content: center;
 
   background:
-    radial-gradient(
-      circle at 50% 45%,
+    radial-gradient(circle at 50% 45%,
       rgba(201, 111, 61, 0.14),
-      transparent 55%
-    ),
+      transparent 55%),
     #111;
 
   font-family: var(--font-display);
@@ -3538,7 +3896,7 @@ img {
     gap: 20px;
   }
 
-  .project-footer > div {
+  .project-footer>div {
     max-width: 50%;
   }
 

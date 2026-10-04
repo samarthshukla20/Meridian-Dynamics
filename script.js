@@ -787,59 +787,160 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  /* =========================================================
-     09 — CONTACT FORM
-     ========================================================= */
+/* =========================================================
+   09 — CONTACT FORM
+   Premium animated submit button + Web3Forms
+   ========================================================= */
 
-  const contactForm =
-    document.querySelector("#contactForm");
+const contactForm = document.querySelector("#contactForm");
 
-  if (contactForm) {
+if (contactForm) {
 
-    contactForm.addEventListener(
-      "submit",
-      (event) => {
+  contactForm.addEventListener("submit", async (event) => {
 
-        event.preventDefault();
+    event.preventDefault();
 
-        const submitButton =
-          contactForm.querySelector(
-            'button[type="submit"]'
-          );
+    const submitButton = contactForm.querySelector(
+      'button[type="submit"]'
+    );
 
-        if (!submitButton) return;
+    const formNote = document.querySelector("#formNote");
 
-        const originalText =
-          submitButton.textContent;
+    if (!submitButton) return;
 
-        submitButton.disabled = true;
 
-        submitButton.textContent =
-          "Sending...";
+    /* ---------------------------------------------
+       Reset previous states
+       --------------------------------------------- */
 
-        /*
-         * Keep your existing form submission
-         * logic here if you already have one.
-         */
+    submitButton.classList.remove(
+      "is-loading",
+      "is-success",
+      "is-error"
+    );
+
+    if (formNote) {
+      formNote.textContent = "";
+      formNote.classList.remove("success", "error");
+    }
+
+
+    /* ---------------------------------------------
+       Loading animation
+       --------------------------------------------- */
+
+    submitButton.disabled = true;
+    submitButton.classList.add("is-loading");
+
+
+    try {
+
+      const formData = new FormData(contactForm);
+
+      const response = await fetch(
+        "https://api.web3forms.com/submit",
+        {
+          method: "POST",
+          body: formData,
+          headers: {
+            Accept: "application/json"
+          }
+        }
+      );
+
+      const result = await response.json();
+
+
+      /* ---------------------------------------------
+         SUCCESS
+         --------------------------------------------- */
+
+      if (response.ok && result.success) {
+
+        submitButton.classList.remove("is-loading");
+
+        /* Small delay makes the transition feel deliberate */
+
+        requestAnimationFrame(() => {
+          submitButton.classList.add("is-success");
+        });
+
+        if (formNote) {
+
+          formNote.textContent =
+            "Thank you. We'll get back to you within 24 hours.";
+
+          formNote.classList.add("success");
+        }
+
+        contactForm.reset();
+
+
+        /* Return button to normal */
 
         setTimeout(() => {
 
-          submitButton.textContent =
-            "Message sent ✓";
+          submitButton.classList.remove("is-success");
 
-          setTimeout(() => {
+          submitButton.disabled = false;
 
-            submitButton.disabled = false;
+        }, 3000);
 
-            submitButton.textContent =
-              originalText;
-
-          }, 2500);
-
-        }, 1000);
       }
-    );
-  }
+
+
+      /* ---------------------------------------------
+         ERROR
+         --------------------------------------------- */
+
+      else {
+
+        throw new Error(
+          result.message ||
+          "Unable to send your inquiry."
+        );
+
+      }
+
+    }
+
+    catch (error) {
+
+      console.error(
+        "[Contact Form] Submission error:",
+        error
+      );
+
+      submitButton.classList.remove("is-loading");
+
+      requestAnimationFrame(() => {
+        submitButton.classList.add("is-error");
+      });
+
+      if (formNote) {
+
+        formNote.textContent =
+          "Something went wrong. Please try again.";
+
+        formNote.classList.add("error");
+      }
+
+
+      /* Allow retry */
+
+      setTimeout(() => {
+
+        submitButton.classList.remove("is-error");
+
+        submitButton.disabled = false;
+
+      }, 2500);
+
+    }
+
+  });
+
+}
 
   /* =========================================================
      10 — EXTERNAL / SAME-PAGE LINKS
