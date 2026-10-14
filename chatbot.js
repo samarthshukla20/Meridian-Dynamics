@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             <button
               class="md-suggestion"
-              data-prompt="What website plan would be best for my business?"
+              data-prompt="I want a professional website for my business. What information do you need to understand my requirements and suggest a custom solution?"
             >
               <span>🌐</span>
               <span>I need a website</span>
@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             <button
               class="md-suggestion"
-              data-prompt="How can Meridian Dynamics help me grow my business?"
+              data-prompt="I want to attract more customers and generate more leads. How could Meridian Dynamics help, and what would you need to know about my business?"
             >
               <span>📈</span>
               <span>Grow my business</span>
@@ -92,7 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             <button
               class="md-suggestion"
-              data-prompt="How can I improve my Google Business Profile and local SEO?"
+              data-prompt="I want more local customers to discover my business on Google. How can Google Business Profile optimization and local SEO help?"
             >
               <span>📍</span>
               <span>Improve my Google presence</span>
@@ -100,7 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             <button
               class="md-suggestion"
-              data-prompt="Which Social Growth plan is right for my business?"
+              data-prompt="I want to improve my social media presence and reach more potential customers. What strategy could work for my business?"
             >
               <span>📱</span>
               <span>Grow my Instagram</span>
@@ -485,51 +485,58 @@ Please try again in a moment or contact the Meridian Dynamics team directly.`
 
   clearBtn.addEventListener('click', () => {
     historyEl.innerHTML = `
-      <div class="md-welcome">
-        <div class="md-welcome-icon">✦</div>
-        <h3>How can I help your business?</h3>
-        <p>
-          I'm Atlas — Meridian Dynamics' AI growth assistant.
-          Ask me about websites, SEO, social growth, or your
-          digital presence.
-        </p>
+      <!-- Welcome Screen -->
+        <div class="md-welcome">
 
-        <div class="md-suggestions-label">Try asking</div>
+          <h3>
+            How can I help your business?
+          </h3>
 
-        <div class="md-suggestions">
-          <button
-            class="md-suggestion"
-            data-prompt="What website plan would be best for my business?"
-          >
-            <span>🌐</span>
-            <span>I need a website</span>
-          </button>
+          <p>
+            I'm Atlas, Meridian Dynamics' AI growth assistant.
+            Ask me about websites, SEO, social growth, or your
+            digital presence.
+          </p>
 
-          <button
-            class="md-suggestion"
-            data-prompt="How can Meridian Dynamics help me grow my business?"
-          >
-            <span>📈</span>
-            <span>Grow my business</span>
-          </button>
+          <div class="md-suggestions-label">
+            Try asking
+          </div>
 
-          <button
-            class="md-suggestion"
-            data-prompt="How can I improve my Google Business Profile and local SEO?"
-          >
-            <span>📍</span>
-            <span>Improve my Google presence</span>
-          </button>
+          <div class="md-suggestions">
 
-          <button
-            class="md-suggestion"
-            data-prompt="Which Social Growth plan is right for my business?"
-          >
-            <span>📱</span>
-            <span>Grow my Instagram</span>
-          </button>
+            <button
+              class="md-suggestion"
+              data-prompt="I want a professional website for my business. What information do you need to understand my requirements and suggest a custom solution?"
+            >
+              <span>🌐</span>
+              <span>I need a website</span>
+            </button>
+
+            <button
+              class="md-suggestion"
+              data-prompt="I want to attract more customers and generate more leads. How could Meridian Dynamics help, and what would you need to know about my business?"
+            >
+              <span>📈</span>
+              <span>Grow my business</span>
+            </button>
+
+            <button
+              class="md-suggestion"
+              data-prompt="I want more local customers to discover my business on Google. How can Google Business Profile optimization and local SEO help?"
+            >
+              <span>📍</span>
+              <span>Improve my Google presence</span>
+            </button>
+
+            <button
+              class="md-suggestion"
+              data-prompt="I want to improve my social media presence and reach more potential customers. What strategy could work for my business?"
+            >
+              <span>📱</span>
+              <span>Grow my Instagram</span>
+            </button>
+          </div>
         </div>
-      </div>
     `;
 
     attachSuggestionListeners();
