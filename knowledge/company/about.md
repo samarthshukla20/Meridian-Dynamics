@@ -1,19 +1,32 @@
 ---
 category: company
 subcategory: about
-keywords: ["about meridian dynamics", "who we are", "agency mission", "overview", "what we do"]
+keywords: ["about Meridian Dynamics", "who we are", "digital studio", "agency overview", "direction movement growth", "web design agency"]
 ---
 
-# About Meridian Dynamics
+# Meridian Dynamics — About
 
-Meridian Dynamics is a digital growth and web engineering agency built to solve a critical issue: businesses paying excessive retainers for slow, generic websites and zero measurable organic traffic.
+Meridian Dynamics is a digital studio focused on websites, digital products, and growth infrastructure for modern businesses. The brand combines editorial design, purposeful interaction, and engineering discipline.
 
-### Our Philosophy
-* **Performance First:** Websites should be ultra-fast, mobile-optimized conversion engines, not bloated static flyers.
-* **Radical Transparency:** Clear, public pricing with well-defined deliverables and no surprise hidden fees.
-* **Organic-Led Growth:** Building long-term brand equity using high-retention content rather than relying entirely on rented, high-cost ad traffic.
+The current public website describes Meridian Dynamics as a premium digital studio engineering websites, products, and growth infrastructure for modern businesses. The brand's guiding idea is to make digital experiences feel deliberate and distinctive rather than generic.
 
-### Core Capabilities
-* **Full-Stack Web Development:** Modern, secure, and responsive web platforms built for speed and lead generation.
-* **Social Media & Content Growth:** Platform-native short-form video strategies, branded graphic production, and audience nurturing.
-* **Funnel Architecture:** On-page conversion optimization, dynamic contact routing (email/WhatsApp), and CRM webhooks.
+## Brand principles
+
+- **Design with restraint:** Use strong typography, generous space, and clear visual hierarchy.
+- **Build for real use:** Websites should work across desktop, tablet, and mobile and make the next step clear.
+- **Purposeful motion:** Interactions and transitions should support the content instead of distracting from it.
+- **Engineering discipline:** Build maintainable digital experiences and pay attention to performance and usability.
+- **Growth-minded delivery:** Connect brand presentation to business goals such as visibility, enquiries, and customer trust.
+
+## Core positioning
+
+Meridian Dynamics sits at the intersection of digital design, technology, and growth. The studio's public language emphasizes direction, movement, and growth.
+
+## Contact
+
+The public website currently lists:
+- Email: meridiandynamics.online@gmail.com
+- Phone: +91 87993 12003
+- Location: Lucknow, Uttar Pradesh, India
+
+For a quote or project-specific availability, direct the visitor to the contact form on https://meridiandynamics.online/ or to the contact details above. Do not invent response guarantees, office hours, or additional contact channels.

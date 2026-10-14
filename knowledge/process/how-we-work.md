@@ -1,24 +1,28 @@
 ---
 category: process
-keywords: ["working process", "how we work", "stages", "timelines", "delivery lifecycle"]
+keywords: ["process", "how we work", "project steps", "discovery", "design", "build", "launch", "timeline"]
 ---
 
-# The Meridian Dynamics 4-Stage Lifecycle
+# Meridian Dynamics — Working Process
 
-### Stage 1: Discovery & Strategy
-* We evaluate your current market positioning, existing web assets, target demographic, and core business goals.
-* We define content requirements, design guidelines, and conversion targets.
+The current homepage presents a four-stage process:
 
-### Stage 2: Architecture & Content Blueprint
-* For web projects: We draft component layouts, UI mockups, and conversion flow wireframes.
-* For social projects: We build the monthly topic calendar, define visual branding guidelines, and draft initial video hooks.
-* Client sign-off is gathered before any production code or video editing begins.
+## 01 — Discover
 
-### Stage 3: Execution Sprint
-* Technical development or creative production commences in structured sprints.
-* We provide sprint updates every 48–72 hours to ensure transparent tracking without excessive meetings.
+Understand the business, audience, current digital presence, goals, and constraints. Clarify the outcome the project should support.
 
-### Stage 4: Testing, Deployment & Handoff
-* Multi-device browser testing, PageSpeed optimization, mobile layout validation, and broken link scans.
-* Production domain configuration and DNS propagation monitoring.
-* Full handover of all repository assets, Figma files, and raw media to the client.
+## 02 — Design
+
+Shape the visual direction, information hierarchy, interface, and user journey. The current brand direction uses restrained layouts, strong editorial typography, and clear visual focus.
+
+## 03 — Build
+
+Implement the agreed experience, responsive behavior, interactions, and required functionality.
+
+## 04 — Grow
+
+After launch, identify relevant next steps such as local search optimization, analytics, iteration, content, or other growth work depending on the agreed scope.
+
+## Project timelines and approvals
+
+The current public pages examined for this refresh do not establish a single guaranteed turnaround time for every project. Timelines should be confirmed after project scope and content readiness are understood. Do not promise a fixed delivery date before that review.
