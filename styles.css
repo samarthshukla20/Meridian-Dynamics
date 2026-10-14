@@ -1112,7 +1112,6 @@ img {
   background: rgba(255, 255, 255, 0.05);
 }
 
-
 /* =========================================================
    SLIDER VIEWPORT
    ========================================================= */
@@ -1146,7 +1145,6 @@ img {
   -webkit-user-drag: none;
 }
 
-
 /* ---------------------------------------------------------
    Slider Layers
    --------------------------------------------------------- */
@@ -1167,7 +1165,6 @@ img {
   user-select: none;
   -webkit-user-select: none;
 }
-
 
 /* ---------------------------------------------------------
    Images
@@ -1200,7 +1197,6 @@ img {
   transform: none;
 }
 
-
 /* ---------------------------------------------------------
    BEFORE
    --------------------------------------------------------- */
@@ -1208,7 +1204,6 @@ img {
 .transform-before {
   z-index: 1;
 }
-
 
 /* ---------------------------------------------------------
    AFTER
@@ -1235,7 +1230,6 @@ img {
    */
   pointer-events: none;
 }
-
 
 /* =========================================================
    LABELS
@@ -1301,7 +1295,6 @@ img {
   background: #22c55e;
 }
 
-
 /* =========================================================
    OVERLAY TEXT
    ========================================================= */
@@ -1350,7 +1343,6 @@ img {
   color: var(--text-secondary);
 }
 
-
 /* =========================================================
    SLIDER DIVIDER
    ========================================================= */
@@ -1379,7 +1371,6 @@ img {
 
   will-change: left;
 }
-
 
 /* ---------------------------------------------------------
    Handle Button
@@ -1423,14 +1414,12 @@ img {
   user-select: none;
 }
 
-
 /* Hover state */
 
 .transform-viewport:hover .transform-handle-button {
   transform: translate(-50%, -50%) scale(1.08);
   background: var(--accent);
 }
-
 
 /* =========================================================
    TRANSFORMATION MILESTONES
@@ -1498,7 +1487,6 @@ img {
   line-height: 1.55;
 }
 
-
 /* =========================================================
    RESPONSIVE
    ========================================================= */
@@ -1514,7 +1502,6 @@ img {
   }
 
 }
-
 
 @media (max-width: 600px) {
 
@@ -2312,7 +2299,6 @@ img {
   color: var(--text-primary);
 }
 
-
 /* =========================================================
    CONTACT FORM CARD
    ========================================================= */
@@ -2398,7 +2384,6 @@ img {
     0 0 0 3px var(--accent-glow);
 }
 
-
 /* =========================================================
    PREMIUM ANIMATED SUBMIT BUTTON
    ========================================================= */
@@ -2437,7 +2422,6 @@ img {
   cursor: default;
 }
 
-
 /* =========================================================
    LOADING STATE
    ========================================================= */
@@ -2462,7 +2446,6 @@ img {
 .form-submit-btn.is-loading>* {
   opacity: 0;
 }
-
 
 /* Loading spinner */
 
@@ -2497,7 +2480,6 @@ img {
 
 }
 
-
 /* =========================================================
    SUCCESS STATE
    ========================================================= */
@@ -2524,7 +2506,6 @@ img {
 .form-submit-btn.is-success>* {
   opacity: 0;
 }
-
 
 /* Success checkmark */
 
@@ -2558,7 +2539,6 @@ img {
 
 }
 
-
 /* =========================================================
    ERROR STATE
    ========================================================= */
@@ -2588,7 +2568,6 @@ img {
 .form-submit-btn.is-error>* {
   opacity: 0;
 }
-
 
 /* Error icon */
 
@@ -2650,7 +2629,6 @@ img {
 
 }
 
-
 /* =========================================================
    FORM STATUS MESSAGE
    ========================================================= */
@@ -2687,7 +2665,6 @@ img {
 .form-note.error {
   color: #c45a5a;
 }
-
 
 /* =========================================================
    MOBILE
@@ -3356,7 +3333,11 @@ img {
   }
 
   .hero-title {
-    font-size: clamp(2.4rem, 11vw, 3.2rem);
+    /* Larger mobile type; prevents the headline from feeling undersized. */
+    font-size: clamp(3.4rem, 13.5vw, 4.8rem);
+    line-height: 0.9;
+    letter-spacing: -0.055em;
+    max-width: 100%;
   }
 
   .hero-subhead {
@@ -3437,7 +3418,6 @@ img {
   }
 }
 
-
 /* =========================================================
    MERIDIAN DYNAMICS — PROJECTS
    ========================================================= */
@@ -3446,7 +3426,6 @@ img {
   background: var(--bg-primary);
   overflow: hidden;
 }
-
 
 /* =========================================================
    PROJECTS HERO
@@ -3521,7 +3500,6 @@ img {
   color: var(--text-muted);
 }
 
-
 /* =========================================================
    PROJECT
    ========================================================= */
@@ -3592,7 +3570,6 @@ img {
   color: var(--text-muted);
 }
 
-
 /* =========================================================
    PROJECT VISUAL
    ========================================================= */
@@ -3638,7 +3615,6 @@ img {
 .project-visual:hover img {
   transform: scale(1.025);
 }
-
 
 /* Temporary project image placeholders */
 
@@ -3699,7 +3675,6 @@ img {
   gap: 18px;
 }
 
-
 /* =========================================================
    CLOSING CTA
    ========================================================= */
@@ -3742,7 +3717,6 @@ img {
   font-family: var(--font-display);
   font-style: italic;
 }
-
 
 /* =========================================================
    MOBILE
@@ -3822,4 +3796,197 @@ img {
     font-size: clamp(3.5rem, 14vw, 6rem);
   }
 
+}
+
+
+/* =========================================================
+   RESPONSIVE SAFETY LAYER
+   Consolidated final overrides for fluid layouts and overflow.
+   ========================================================= */
+
+:where(img, video, canvas, iframe, svg) {
+  max-width: 100%;
+}
+
+:where(input, textarea, select, button) {
+  max-width: 100%;
+}
+
+.container,
+.hero-content,
+.section-header,
+.contact-container,
+.footer-container {
+  min-width: 0;
+}
+
+@media (max-width: 1024px) {
+
+  .work-study-grid,
+  .pricing-cards-grid,
+  .contact-container {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .footer-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .service-moment-header {
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .service-tags-wrap {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding-block: clamp(64px, 11vw, 90px);
+  }
+
+  .container {
+    padding-inline: 20px;
+  }
+
+  .hero {
+    height: auto;
+    min-height: 100svh;
+  }
+
+  .hero-content {
+    width: min(100% - 32px, 600px);
+    min-height: 100svh;
+    padding: 112px 0 108px;
+  }
+
+  .hero-title {
+    font-size: clamp(3.6rem, 12.5vw, 5.5rem);
+    line-height: 0.9;
+    letter-spacing: -0.055em;
+    max-width: 100%;
+  }
+
+  .hero-line {
+    max-width: 100%;
+  }
+
+  .hero-actions {
+    width: 100%;
+  }
+
+  .hero-actions .btn {
+    min-height: 48px;
+  }
+
+  .work-study {
+    min-width: 0;
+    padding: clamp(20px, 5vw, 36px);
+  }
+
+  .work-study-stats {
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .service-caption-card {
+    max-width: none;
+  }
+
+  .footer-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 36px;
+  }
+
+  .footer-legal-bar {
+    align-items: flex-start;
+    text-align: left;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding-inline: 16px;
+  }
+
+  .hero-content {
+    width: min(100% - 28px, 420px);
+    padding-top: 104px;
+    padding-bottom: 96px;
+  }
+
+  .hero-title {
+    font-size: clamp(3.25rem, 13.2vw, 4.25rem);
+    line-height: 0.92;
+    letter-spacing: -0.05em;
+  }
+
+  .hero-subhead {
+    width: 100%;
+    font-size: 14px;
+  }
+
+  .hero-actions .btn {
+    width: min(100%, 280px);
+  }
+
+  .service-moment {
+    margin-bottom: 64px;
+  }
+
+  .service-moment-header {
+    align-items: flex-start;
+  }
+
+  .service-num-title {
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .service-headline {
+    font-size: clamp(2rem, 9vw, 3rem);
+    overflow-wrap: anywhere;
+  }
+
+  .transform-viewport {
+    height: min(110vw, 420px);
+    min-height: 300px;
+  }
+
+  .faq-q {
+    gap: 16px;
+    padding: 20px 18px;
+    font-size: 15px;
+  }
+
+  .faq-a-inner {
+    padding-inline: 18px;
+  }
+
+  .footer-wordmark-wrap {
+    margin-bottom: 48px;
+    padding-bottom: 28px;
+  }
+
+  .footer-huge-wordmark {
+    font-size: clamp(2.3rem, 11vw, 4rem);
+    overflow-wrap: anywhere;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
 }
