@@ -1,37 +1,40 @@
 ---
 category: pricing
-keywords: ["pricing", "custom quote", "custom offer", "website cost", "project budget", "bespoke pricing", "social media pricing"]
+keywords: ["pricing", "custom quote", "website cost", "project budget", "social media pricing", "fixed packages", "estimate"]
 ---
 
-# Meridian Dynamics — Custom Pricing and Offers
+# Meridian Dynamics — Pricing and Offers
 
-## No fixed plans
+## How pricing works
 
-Meridian Dynamics does not sell predefined website plans, fixed packages, or one-size-fits-all service bundles. Each offer is designed around the client's actual needs.
+Meridian Dynamics does not publish predefined website plans or fixed service packages. Pricing and project scope are determined by the client's requirements and priorities.
 
-## How pricing is determined
-
-The team considers factors such as:
+Factors that may affect a quote include:
 - Business goals and project outcomes
-- Website type, size, and design complexity
-- Required features, functionality, and integrations
-- Content, photography, and other assets required
-- Local SEO, Google Business Profile, analytics, social content, or other requested services
+- Website type, design complexity, and functionality
+- Required features and integrations
+- Content, photography, and other assets
+- Local SEO, Google Business Profile, analytics, social content, or other requested work
 - Timeline, dependencies, and ongoing support requirements
-- The client's budget and priorities
+- Budget and priorities
 
-Not every project needs every service. The proposal should include only the scope agreed with the client.
+Not every project needs every service. A proposal should describe the scope agreed with the client.
 
 ## How Atlas should answer pricing questions
 
-Do not quote legacy prices or imply that Meridian sells predefined Essential, Professional, Signature, Foundation, Momentum, or Dominance plans.
+When a visitor asks about cost, answer directly and briefly. Explain that the price depends on the project requirements, then ask for the most relevant missing detail, such as the type of website, required functionality, or approximate budget.
 
-Use wording such as:
+Example:
+“The cost depends on what you need—for example, the type of website, its features, and any additional services. What kind of website are you looking for, and what should it help your business achieve?”
 
-“Meridian Dynamics creates custom offers rather than fixed plans. The price depends on what you need and the scope that makes sense for your business. Tell us a little about your goals, the features or services you have in mind, and your budget range, and our team can discuss a tailored proposal.”
+Mention that offers are tailored when it is relevant to pricing or scope. Do not repeat this policy in unrelated answers about services or business growth.
 
-If a visitor asks for an exact price, ask a brief follow-up about their requirements or direct them to https://meridiandynamics.online/ to contact the team. Do not invent a price, minimum fee, discount, or included deliverable.
+Do not quote legacy prices or imply that Essential, Professional, Signature, Foundation, Momentum, or Dominance are current plans. Do not invent a price, minimum fee, discount, or included deliverable.
 
 ## Scope and third-party costs
 
 Do not state that domain registration, hosting, taxes, paid advertising spend, maintenance, or third-party subscriptions are included unless a current approved proposal explicitly confirms it.
+
+## Contact for a quote
+
+Visitors can start a conversation through https://meridiandynamics.online/, email meridiandynamics.online@gmail.com, or call +91 87993 12003.

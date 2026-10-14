@@ -5,7 +5,7 @@ keywords: ["process", "how we work", "project steps", "discovery", "design", "bu
 
 # Meridian Dynamics — Working Process
 
-The current homepage presents a four-stage process:
+The current homepage presents a four-stage process.
 
 ## 01 — Discover
 
@@ -21,8 +21,8 @@ Implement the agreed experience, responsive behavior, interactions, and required
 
 ## 04 — Grow
 
-After launch, identify relevant next steps such as local search optimization, analytics, iteration, content, or other growth work depending on the agreed scope.
+After launch, identify relevant next steps such as local search optimization, analytics, iteration, content, or other growth work where appropriate.
 
 ## Project timelines and approvals
 
-The current public pages examined for this refresh do not establish a single guaranteed turnaround time for every project. Timelines should be confirmed after project scope and content readiness are understood. Do not promise a fixed delivery date before that review.
+Timelines depend on the project scope, content readiness, complexity, and review cycles. The team confirms a realistic schedule after understanding the requirements. Do not promise a fixed delivery date before that review.
