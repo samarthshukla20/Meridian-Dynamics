@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy — Meridian Dynamics</title>
+  <meta name="description"
+    content="Learn how Meridian Dynamics handles contact-form submissions, AI chatbot messages, analytics, and privacy requests.">
+  <meta name="theme-color" content="#0B0B0B">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="canonical" href="https://www.meridiandynamics.online/privacy-policy.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Meridian Dynamics">
+  <meta property="og:title" content="Privacy Policy — Meridian Dynamics">
+  <meta property="og:description"
+    content="How Meridian Dynamics handles information when you visit our website, contact us, or use Meridian Atlas.">
+  <meta property="og:url" content="https://www.meridiandynamics.online/privacy-policy.html">
+  <meta property="og:image" content="https://www.meridiandynamics.online/assets/preview.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="en_IN">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Privacy Policy — Meridian Dynamics">
+  <meta name="twitter:description"
+    content="How Meridian Dynamics handles information when you visit our website, contact us, or use Meridian Atlas.">
+  <meta name="twitter:image" content="https://www.meridiandynamics.online/assets/preview.png">
+  <style>
+    .privacy-page {
+      min-height: 100vh;
+      padding-top: 150px;
+    }
+
+    .privacy-hero {
+      position: relative;
+      padding: 64px 0 76px;
+      overflow: hidden;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .privacy-hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: radial-gradient(ellipse at 78% 35%, rgba(201, 111, 61, .12), transparent 44%), linear-gradient(120deg, transparent 45%, rgba(255, 255, 255, .015));
+    }
+
+    .privacy-inner {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 0 32px;
+      position: relative;
+    }
+
+    .privacy-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 28px;
+      color: var(--accent);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+
+    .privacy-eyebrow .line {
+      display: inline-block;
+      width: 36px;
+      height: 1px;
+      background: currentColor;
+      opacity: .65;
+    }
+
+    .privacy-title {
+      max-width: 850px;
+      font-size: clamp(3.3rem, 8vw, 7rem);
+      font-weight: 400;
+      letter-spacing: -.055em;
+      line-height: .98;
+    }
+
+    .privacy-title em {
+      color: var(--accent);
+      font-family: var(--font-display);
+      font-weight: 400;
+    }
+
+    .privacy-intro {
+      max-width: 620px;
+      margin-top: 28px;
+      color: var(--text-secondary);
+      font-size: clamp(15px, 1.5vw, 18px);
+      line-height: 1.8;
+    }
+
+    .privacy-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 28px;
+      margin-top: 34px;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    .privacy-meta strong {
+      color: var(--text-primary);
+      font-weight: 500;
+    }
+
+    .privacy-layout {
+      display: grid;
+      grid-template-columns: 220px minmax(0, 1fr);
+      gap: clamp(32px, 6vw, 88px);
+      padding-top: 72px;
+      padding-bottom: 110px;
+    }
+
+    .privacy-toc {
+      align-self: start;
+      position: sticky;
+      top: 104px;
+      border-left: 1px solid var(--border);
+      padding-left: 18px;
+    }
+
+    .privacy-toc-label {
+      display: block;
+      margin-bottom: 17px;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: .16em;
+    }
+
+    .privacy-toc a {
+      display: block;
+      padding: 7px 0;
+      color: var(--text-secondary);
+      font-size: 12px;
+      line-height: 1.5;
+      transition: color .2s ease, transform .2s ease;
+    }
+
+    .privacy-toc a:hover {
+      color: var(--accent);
+      transform: translateX(3px);
+    }
+
+    .privacy-content {
+      min-width: 0;
+    }
+
+    .privacy-section {
+      padding: 0 0 38px;
+      margin: 0 0 38px;
+      border-bottom: 1px solid var(--border);
+      scroll-margin-top: 110px;
+    }
+
+    .privacy-section:last-child {
+      border-bottom: 0;
+    }
+
+    .privacy-section-kicker {
+      display: block;
+      margin-bottom: 12px;
+      color: var(--accent);
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: .14em;
+    }
+
+    .privacy-section h2 {
+      margin-bottom: 18px;
+      font-size: clamp(1.65rem, 3vw, 2.4rem);
+      font-weight: 400;
+      letter-spacing: -.035em;
+      line-height: 1.18;
+    }
+
+    .privacy-section h2 span {
+      color: var(--accent);
+      font-family: var(--font-display);
+      font-style: italic;
+    }
+
+    .privacy-section h3 {
+      margin: 25px 0 8px;
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--text-primary);
+    }
+
+    .privacy-section p,
+    .privacy-section li {
+      color: var(--text-secondary);
+      font-size: 14px;
+      line-height: 1.9;
+    }
+
+    .privacy-section p+p {
+      margin-top: 13px;
+    }
+
+    .privacy-section ul {
+      list-style: none;
+      margin: 14px 0 0;
+      padding: 0;
+    }
+
+    .privacy-section li {
+      position: relative;
+      margin: 8px 0;
+      padding-left: 19px;
+    }
+
+    .privacy-section li::before {
+      content: "";
+      position: absolute;
+      top: .8em;
+      left: 1px;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    .privacy-section a {
+      color: var(--text-primary);
+      text-decoration: underline;
+      text-decoration-color: rgba(201, 111, 61, .6);
+      text-underline-offset: 3px;
+      overflow-wrap: anywhere;
+    }
+
+    .privacy-section a:hover {
+      color: var(--accent);
+    }
+
+    .privacy-note {
+      margin-top: 20px;
+      padding: 18px 20px;
+      border: 1px solid var(--border);
+      border-left: 2px solid var(--accent);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      background: rgba(255, 255, 255, .025);
+    }
+
+    .privacy-note p {
+      margin: 0 !important;
+      font-size: 13px;
+    }
+
+    .privacy-contact-card {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      margin-top: 22px;
+      padding: 24px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      background: linear-gradient(120deg, rgba(201, 111, 61, .09), rgba(255, 255, 255, .02));
+    }
+
+    .privacy-contact-card p {
+      margin: 0;
+    }
+
+    .privacy-contact-card a {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 16px;
+      border: 1px solid var(--border-hover);
+      border-radius: var(--radius-full);
+      color: var(--text-primary);
+      font-size: 12px;
+      white-space: nowrap;
+    }
+
+    .privacy-contact-card a:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .privacy-back-top {
+      display: inline-flex;
+      margin-top: 14px;
+      color: var(--text-muted) !important;
+      font-family: var(--font-mono);
+      font-size: 10px !important;
+      letter-spacing: .1em;
+      text-decoration: none !important;
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 800px) {
+      .privacy-page {
+        padding-top: 112px;
+      }
+
+      .privacy-hero {
+        padding: 46px 0 58px;
+      }
+
+      .privacy-layout {
+        grid-template-columns: 1fr;
+        gap: 42px;
+        padding-top: 42px;
+      }
+
+      .privacy-toc {
+        position: static;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0 18px;
+        padding-left: 14px;
+      }
+
+      .privacy-toc-label {
+        grid-column: 1/-1;
+      }
+
+      .privacy-toc a {
+        font-size: 11px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .privacy-inner {
+        padding: 0 22px;
+      }
+
+      .privacy-title {
+        font-size: clamp(3rem, 16vw, 4.5rem);
+      }
+
+      .privacy-toc {
+        grid-template-columns: 1fr;
+      }
+
+      .privacy-section p,
+      .privacy-section li {
+        font-size: 13px;
+      }
+
+      .privacy-contact-card {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .privacy-toc a {
+        transition: none;
+      }
+
+      html {
+        scroll-behavior: auto;
+      }
+    }
+  </style>
+</head>
+
+<body class="dark-theme privacy-body">
+  <div class="grain" aria-hidden="true"></div>
+  <header class="nav-wrap" id="navWrap">
+    <nav class="nav" id="mainNav">
+      <a href="index.html" class="nav-logo" aria-label="Meridian Dynamics Home">
+        <img src="assets/logo.png" alt="Meridian Dynamics" class="nav-logo-mark" height="26">
+        <span class="nav-brand-name">MERIDIAN DYNAMICS</span>
+      </a>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="work.html" class="nav-link">Work</a></li>
+        <li><a href="philosophy.html" class="nav-link">Philosophy</a></li>
+        <li><a href="#process" class="nav-link">Process</a></li>
+        <li><a href="#top" class="nav-link">About</a></li>
+        <li><a href="index.html#contact" class="nav-link nav-link-mobile-cta">Start a project</a></li>
+      </ul>
+
+      <div class="nav-right">
+        <a href="index.html#contact" class="nav-cta">
+          <span>Start a project</span>
+          <svg class="nav-cta-arrow" width="12" height="12" viewBox="0 0 12 12" fill="none">
+            <path d="M2.5 9.5L9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="currentColor" stroke-width="1.5"
+              stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </a>
+        <button class="nav-burger" id="navBurger" aria-label="Toggle navigation menu" aria-expanded="false">
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <main class="privacy-page" id="top">
+    <section class="privacy-hero">
+      <div class="privacy-inner">
+        <div class="privacy-eyebrow">
+        </div>
+        <h1 class="privacy-title">Privacy, with<br><em>clarity.</em></h1>
+        <p class="privacy-intro">A transparent overview of how Meridian Dynamics handles information when you visit our
+          website, contact us, or use Meridian Atlas.</p>
+        <div class="privacy-meta"><span>Effective date <strong>16 October 2026</strong></span><span>Last reviewed
+            <strong>16 October 2026</strong></span></div>
+      </div>
+    </section>
+
+    <div class="privacy-inner privacy-layout">
+      <aside class="privacy-toc" aria-label="Privacy policy contents">
+        <span class="privacy-toc-label">ON THIS PAGE</span>
+        <a href="#overview">01 &nbsp; Overview</a>
+        <a href="#information">02 &nbsp; Information we collect</a>
+        <a href="#uses">03 &nbsp; How we use it</a>
+        <a href="#forms">04 &nbsp; Contact forms</a>
+        <a href="#ai">05 &nbsp; AI &amp; Meridian Atlas</a>
+        <a href="#analytics">06 &nbsp; Analytics &amp; cookies</a>
+        <a href="#sharing">07 &nbsp; Sharing information</a>
+        <a href="#retention">08 &nbsp; Retention</a>
+        <a href="#security">09 &nbsp; Security</a>
+        <a href="#international">10 &nbsp; International visitors</a>
+        <a href="#rights">11 &nbsp; Your choices</a>
+        <a href="#children">12 &nbsp; Children</a>
+        <a href="#links">13 &nbsp; Third-party links</a>
+        <a href="#changes">14 &nbsp; Policy changes</a>
+        <a href="#contact">15 &nbsp; Contact</a>
+      </aside>
+
+      <article class="privacy-content">
+        <section class="privacy-section" id="overview">
+          <span class="privacy-section-kicker">01 / OVERVIEW</span>
+          <h2>Privacy should be <span>understood.</span></h2>
+          <p>Meridian Dynamics (“we”, “our” or “us”) aims to handle personal information responsibly. This policy
+            explains how information may be collected, used, shared and retained when you visit <a
+              href="https://www.meridiandynamics.online/">meridiandynamics.online</a>, submit an inquiry, or use our
+            AI-powered chatbot, Meridian Atlas.</p>
+          <p>Meridian Dynamics currently operates as an individual-led team and is not a registered company. For privacy
+            questions or requests, contact <a
+              href="mailto:meridiandynamics.online@gmail.com">meridiandynamics.online@gmail.com</a>.</p>
+          <p>Where applicable law requires consent for a particular processing activity, simply using the website does
+            not replace that consent.</p>
+        </section>
+
+        <section class="privacy-section" id="information">
+          <span class="privacy-section-kicker">02 / INFORMATION</span>
+          <h2>What information we <span>handle.</span></h2>
+          <h3>Information you provide</h3>
+          <p>When you submit our contact form, the form may collect your name, email address, message, and the optional
+            business or industry information you choose to provide.</p>
+          <h3>Information handled by the chatbot</h3>
+          <p>When you use Meridian Atlas, the text you submit is processed by our backend and sent to Google's Gemini
+            API to generate a response. Relevant information from our business knowledge base may be included to provide
+            context.</p>
+          <h3>Analytics information</h3>
+          <p>We use Google Analytics to understand how visitors interact with the website. Depending on the
+            configuration, analytics may process pages viewed, interactions, referring pages, browser and device
+            details, online identifiers, and approximate location inferred from technical information.</p>
+          <p>Please avoid submitting passwords, payment-card details, sensitive personal information, or confidential
+            information through the contact form or chatbot unless it is genuinely necessary and you have an appropriate
+            basis to share it.</p>
+        </section>
+
+        <section class="privacy-section" id="uses">
+          <span class="privacy-section-kicker">03 / PURPOSE</span>
+          <h2>How information is <span>used.</span></h2>
+          <ul>
+            <li>Responding to inquiries and communicating with prospective or existing clients.</li>
+            <li>Understanding project requirements and discussing possible services.</li>
+            <li>Operating, maintaining, and troubleshooting the website and chatbot.</li>
+            <li>Generating AI chatbot responses and providing information about our services.</li>
+            <li>Measuring website usage and improving content and usability.</li>
+            <li>Protecting the website and services against misuse, spam, and technical issues.</li>
+            <li>Addressing legitimate business needs and applicable legal obligations.</li>
+          </ul>
+        </section>
+
+        <section class="privacy-section" id="forms">
+          <span class="privacy-section-kicker">04 / CONTACT FORMS</span>
+          <h2>Your inquiry, handled <span>carefully.</span></h2>
+          <p>Our contact form uses Web3Forms to process form submissions and deliver them to our business email. Members
+            of the Meridian Dynamics team can access these inquiries to respond and manage related business
+            communications.</p>
+          <p>Web3Forms and any infrastructure or email-delivery providers it uses may process submission data and
+            associated technical information under their own terms and privacy practices. We do not control the
+            independent practices of those providers. Read the <a href="https://web3forms.com/privacy" target="_blank"
+              rel="noopener noreferrer">Web3Forms Privacy Policy</a> for more details.</p>
+          <p>You may request deletion of a contact-form submission by emailing <a
+              href="mailto:meridiandynamics.online@gmail.com?subject=Privacy%20Request">meridiandynamics.online@gmail.com</a>.
+            We will review the request and delete information under our control where appropriate, subject to applicable
+            legal obligations and legitimate retention needs.</p>
+        </section>
+
+        <section class="privacy-section" id="ai">
+          <span class="privacy-section-kicker">05 / ARTIFICIAL INTELLIGENCE</span>
+          <h2>How Meridian Atlas uses <span>AI.</span></h2>
+          <p>Meridian Atlas is an AI-powered chatbot that answers questions about Meridian Dynamics and its services.
+            Messages submitted to the chatbot are sent through our backend to Google's Gemini API. Relevant business
+            knowledge-base content may be sent alongside a request to provide context.</p>
+          <p>We do not intentionally save chatbot conversations in a persistent conversation-history database. This does
+            not mean that technical logs, temporary records, or provider-side records cannot exist. Actual handling and
+            retention depend partly on the applicable provider terms and configuration.</p>
+          <p>AI responses may be incomplete or inaccurate. Verify important details directly with Meridian Dynamics
+            before relying on them for a business decision.</p>
+          <ul>
+            <li><a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google Privacy
+                Policy</a></li>
+            <li><a href="https://cloud.google.com/terms/cloud-privacy-notice" target="_blank"
+                rel="noopener noreferrer">Google Cloud Privacy Notice</a></li>
+          </ul>
+        </section>
+
+        <section class="privacy-section" id="analytics">
+          <span class="privacy-section-kicker">06 / ANALYTICS &amp; COOKIES</span>
+          <h2>Understanding how the site is <span>used.</span></h2>
+          <p>We use Google Analytics to measure website traffic and interactions. Depending on its implementation and
+            configuration, Google Analytics may use cookies or similar technologies.</p>
+          <p>Our website currently does not display a cookie-consent banner or provide dedicated accept/reject controls.
+            We have not yet verified every cookie or browser-storage mechanism that may be used by analytics tags or
+            service providers, nor have we confirmed the data-retention setting in our Google Analytics account.</p>
+          <p>You can manage or delete cookies through your browser settings. Blocking cookies may affect website
+            functionality or analytics measurements, and browser controls may not prevent every form of processing.</p>
+          <div class="privacy-note">
+            <p><strong>Our next review:</strong> We will review our analytics and consent configuration and implement
+              notices or controls required by applicable law. A privacy policy alone does not replace a legally required
+              consent mechanism.</p>
+          </div>
+          <p>Learn more about <a href="https://support.google.com/analytics/answer/6004245" target="_blank"
+              rel="noopener noreferrer">Google Analytics' privacy and safeguarding practices</a>.</p>
+        </section>
+
+        <section class="privacy-section" id="sharing">
+          <span class="privacy-section-kicker">07 / SERVICE PROVIDERS</span>
+          <h2>When information is <span>shared.</span></h2>
+          <p>We do not intend to sell visitors' personal information. Information may be transmitted to or processed by
+            the following services where needed to provide website functionality:</p>
+          <ul>
+            <li><strong>Web3Forms</strong> — contact-form processing and delivery.</li>
+            <li><strong>Vercel</strong> — hosting and operation of our backend.</li>
+            <li><strong>Google Gemini</strong> — processing chatbot prompts and generating answers.</li>
+            <li><strong>Google Analytics</strong> — measuring website usage.</li>
+          </ul>
+          <p>We may also disclose information where required by law, in response to valid legal requests, to protect
+            rights or safety, or to address security incidents and misuse. Service providers may use relevant
+            infrastructure providers under their own terms.</p>
+          <p>Review the <a href="https://vercel.com/legal/privacy-policy" target="_blank"
+              rel="noopener noreferrer">Vercel Privacy Policy</a> for information about Vercel's practices. Provider
+            locations, precise logs, and retention arrangements have not all been independently verified by us.</p>
+        </section>
+
+        <section class="privacy-section" id="retention">
+          <span class="privacy-section-kicker">08 / RETENTION</span>
+          <h2>Keeping information only as <span>needed.</span></h2>
+          <p>We aim to retain personal information only for as long as reasonably necessary for the purposes described
+            in this policy, subject to applicable legal obligations and legitimate business needs.</p>
+          <ul>
+            <li><strong>Contact-form submissions:</strong> kept while needed to respond to an inquiry, manage a business
+              relationship, or address related matters; deletion can be requested by email.</li>
+            <li><strong>Chatbot conversations:</strong> not intentionally stored in a persistent conversation-history
+              database. Provider or technical logs may still exist, and their retention periods have not been verified.
+            </li>
+            <li><strong>Google Analytics:</strong> the retention setting in our Analytics account has not yet been
+              confirmed.</li>
+          </ul>
+          <p>Deleting information from systems under our control may not delete records held independently by a
+            third-party provider. A separate request to that provider may be required.</p>
+        </section>
+
+        <section class="privacy-section" id="security">
+          <span class="privacy-section-kicker">09 / SECURITY</span>
+          <h2>Reasonable care, <span>not false promises.</span></h2>
+          <p>We take reasonable steps intended to protect information handled through our website and business processes
+            against unauthorized access, loss, misuse, or disclosure. No website, transmission method, or electronic
+            storage system can be guaranteed completely secure.</p>
+          <p>If you believe that information submitted through our website has been exposed or misused, contact <a
+              href="mailto:meridiandynamics.online@gmail.com">meridiandynamics.online@gmail.com</a>.</p>
+        </section>
+
+        <section class="privacy-section" id="international">
+          <span class="privacy-section-kicker">10 / INTERNATIONAL VISITORS</span>
+          <h2>Information across <span>borders.</span></h2>
+          <p>Our website serves visitors in India and other countries. Service providers may process information in
+            countries other than the country where a visitor resides. We have not independently verified every
+            processing location or international-transfer arrangement used by our providers.</p>
+          <p>Such processing is subject to the providers' applicable terms and any legal requirements that apply to the
+            processing.</p>
+        </section>
+
+        <section class="privacy-section" id="rights">
+          <span class="privacy-section-kicker">11 / YOUR CHOICES</span>
+          <h2>Your information, your <span>voice.</span></h2>
+          <p>Depending on your location and applicable law, you may be able to request access to, correction of, or
+            deletion of personal information, or raise an objection or complaint regarding particular processing
+            activities.</p>
+          <p>To make a request, email <a
+              href="mailto:meridiandynamics.online@gmail.com?subject=Privacy%20Request">meridiandynamics.online@gmail.com</a>
+            with “Privacy Request” in the subject and describe what you need. We may need to verify your identity or ask
+            for additional information before responding. We will review and respond in accordance with applicable law.
+          </p>
+          <p>Some information may need to be retained where a legal obligation or valid exception applies. If your
+            request concerns records held independently by Google, Web3Forms, Vercel, or another provider, we may direct
+            you to that provider's privacy process where appropriate.</p>
+        </section>
+
+        <section class="privacy-section" id="children">
+          <span class="privacy-section-kicker">12 / CHILDREN</span>
+          <h2>A general audience, <span>not a children's service.</span></h2>
+          <p>Our website is intended for a general audience, particularly individuals and businesses interested in
+            digital services. It is not specifically designed or directed at children, and we do not intentionally seek
+            personal information from children through the website.</p>
+          <p>If you believe a child has provided personal information to us, please contact us so we can review the
+            circumstances and take appropriate steps.</p>
+        </section>
+
+        <section class="privacy-section" id="links">
+          <span class="privacy-section-kicker">13 / EXTERNAL WEBSITES</span>
+          <h2>Beyond our <span>website.</span></h2>
+          <p>Our website may link to social-media platforms, portfolios, and other external services. Those websites
+            operate under their own terms and privacy practices. We encourage you to review their policies before
+            submitting information. A link does not mean that Meridian Dynamics controls the linked service's data
+            practices.</p>
+        </section>
+
+        <section class="privacy-section" id="changes">
+          <span class="privacy-section-kicker">14 / UPDATES</span>
+          <h2>This policy may <span>evolve.</span></h2>
+          <p>We may update this policy as our website, services, data practices, or applicable legal requirements
+            change. The updated version will appear on this page with a revised effective date. We encourage visitors to
+            review it periodically.</p>
+        </section>
+
+        <section class="privacy-section" id="contact">
+          <span class="privacy-section-kicker">15 / CONTACT</span>
+          <h2>Questions? Let's keep it <span>clear.</span></h2>
+          <p>For privacy questions, requests to delete contact-form submissions, or concerns about how information is
+            handled, contact Meridian Dynamics using the details below.</p>
+          <div class="privacy-contact-card">
+            <div>
+              <p><strong>Meridian Dynamics</strong></p>
+              <p>Privacy requests and questions</p>
+            </div>
+            <a href="mailto:meridiandynamics.online@gmail.com?subject=Privacy%20Request">Email us ↗</a>
+          </div>
+          <p style="margin-top:18px">Email: <a
+              href="mailto:meridiandynamics.online@gmail.com">meridiandynamics.online@gmail.com</a><br>Website: <a
+              href="https://www.meridiandynamics.online/">meridiandynamics.online</a></p>
+          <p class="privacy-back-top"><a href="#top">↑ Back to top</a></p>
+        </section>
+        <p style="color:var(--text-muted);font-size:11px;line-height:1.8">This page describes our current understanding
+          of data practices based on information available to us. It is not legal advice and does not guarantee
+          compliance with every law that may apply. Provider settings and legal requirements should be reviewed as our
+          practices evolve.</p>
+      </article>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-container">
+      <div class="footer-wordmark-wrap">
+        <h2 class="footer-huge-wordmark">MERIDIAN DYNAMICS.</h2>
+      </div>
+
+      <div class="footer-grid">
+        <div class="footer-brand-bio">
+          <p class="footer-tagline">
+            Digital experiences for ambitious businesses. Built with architectural restraint and
+            uncompromising
+            engineering.
+          </p>
+          <div class="footer-social-links">
+            <a href="https://www.instagram.com/meridiandynamics.online" target="_blank" rel="noopener noreferrer"
+              class="social-link" aria-label="Instagram">
+              Instagram
+            </a>
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-link"
+              aria-label="LinkedIn">
+              LinkedIn
+            </a>
+            <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="social-link"
+              aria-label="GitHub">
+              GitHub
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-nav-col">
+          <span class="footer-col-title">NAVIGATION</span>
+          <ul class="footer-list">
+            <li><a href="about.html">About</a></li>
+            <li><a href="work.html">Work</a></li>
+            <li><a href="philosophy.html">Philosophy</a></li>
+            <li><a href="#process">Process</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-contact-col">
+          <span class="footer-col-title">DIRECT INQUIRIES</span>
+          <ul class="footer-list">
+            <li><a href="mailto:meridiandynamics.online@gmail.com">meridiandynamics.online@gmail.com</a>
+            </li>
+            <li><a href="tel:+918799312003">+91 87993 12003</a></li>
+            <li class="footer-location">Lucknow, Uttar Pradesh, India</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-legal-bar">
+        <span class="footer-copyright">© 2026 Meridian Dynamics. All rights reserved.</span>
+        <span class="footer-crafted">Designed & Developed by Meridian Dynamics.</span>
+      </div>
+    </div>
+  </footer>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.20/dist/lenis.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>
