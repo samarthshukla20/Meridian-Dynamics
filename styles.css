@@ -138,67 +138,6 @@ img {
 }
 
 /* =========================================================
-   CUSTOM CURSOR
-   ========================================================= */
-.cursor {
-  position: fixed;
-  top: 0;
-  left: 0;
-  pointer-events: none;
-  z-index: 9999;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  transition: opacity 0.3s ease, transform 0.08s linear;
-  will-change: transform;
-}
-
-.cursor.visible {
-  opacity: 1;
-}
-
-.cursor-dot {
-  width: 8px;
-  height: 8px;
-  background: var(--text-primary);
-  border-radius: 50%;
-  transition: width 0.3s var(--ease-cinematic), height 0.3s var(--ease-cinematic), background 0.3s ease, opacity 0.3s ease;
-}
-
-.cursor-label {
-  display: none;
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.08em;
-  font-weight: 500;
-  color: #0B0B0B;
-  white-space: nowrap;
-}
-
-.cursor.cursor-active .cursor-dot {
-  width: auto;
-  height: 34px;
-  padding: 0 16px;
-  background: var(--text-primary);
-  border-radius: var(--radius-full);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-}
-
-.cursor.cursor-active .cursor-label {
-  display: block;
-}
-
-@media (hover: none) {
-  .cursor {
-    display: none !important;
-  }
-}
-
-/* =========================================================
    BUTTONS & COMMON UI
    ========================================================= */
 .btn {
